@@ -1,12 +1,12 @@
-import '../../styles/index.css';
-import '../../styles/styles.css';
-import Navbar from '../components/navbar.js';
+import "../../styles/index.css";
+import "../../styles/styles.css";
+import Navbar from "../components/navbar.js";
 
 function Home() {
   return (
     <div className="home_container">
-      {Navbar()}
-      <h1>Test1</h1>
+      <Navbar />
+      <h1>Test122</h1>
     </div>
   );
 }
