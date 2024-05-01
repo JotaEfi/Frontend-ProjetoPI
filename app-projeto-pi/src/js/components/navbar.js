@@ -3,7 +3,8 @@ import "../../styles/styles.css";
 import "../../styles/queries.css";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import ProjectLogo from "../../assets/img/monza-logo.png";
+import ProjectLogo from "../../assets/img/monza-logo4.png";
+import { IoIosSearch } from "react-icons/io";
 
 const Navbar = () => {
   const location = useLocation();
@@ -18,11 +19,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="nav-bar">
+    <nav className="nav-bar inter-font900">
+      <button>
+        <img src={ProjectLogo} alt="" style={{ width: "150px" }} />
+      </button>
       <ul>
-        <button>
-          <img src={ProjectLogo} alt="" />
-        </button>
         <a
           href="home"
           to="/"
@@ -51,6 +52,19 @@ const Navbar = () => {
           Como Funciona?
         </a>
       </ul>
+
+      <div class="box">
+        <IoIosSearch className="search_icon" />
+        <form name="search">
+          <input
+            type="text"
+            class="input"
+            name="txt"
+            onmouseout="this.value = ''; this.blur();"
+          />
+        </form>
+        <i class="fas fa-search"></i>
+      </div>
     </nav>
   );
 };

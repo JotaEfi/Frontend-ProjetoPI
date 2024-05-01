@@ -11,6 +11,10 @@ a {
 
 html {
   font-size: 62.5%;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
 }
 
 body {
@@ -52,4 +56,14 @@ body:fullscreen {
 /* Mudar a cor do "polegar" quando estiver sendo arrastado */
 *::-moz-scrollbar-thumb:hover {
   background-color: #555;
+}
+
+.inter-font900 {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+
 }
