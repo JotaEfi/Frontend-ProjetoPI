@@ -2,23 +2,23 @@ a {
   text-decoration: none;
   color: #fff;
 }
+
 * {
   margin: 0;
   box-sizing: border-box;
   padding: 0;
-  font-family: sans-serif;
 }
 
 html {
   font-size: 62.5%;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
   font-style: normal;
+  font-optical-sizing: auto;
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin: 0;
   padding: 0;
   /* background: url('/src/images/gym-img2.png') no-repeat center center fixed;
@@ -58,12 +58,3 @@ body:fullscreen {
   background-color: #555;
 }
 
-.inter-font900 {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-  font-variation-settings:
-    "slnt" 0;
-
-}
