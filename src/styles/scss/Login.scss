@@ -1,54 +1,96 @@
-.Login {
-   display:flex;
+@import 'Var.scss';
+
+
+.containerLogin {
+
+   display: flex;
    justify-content: center;
-  margin: 0 auto;
-  margin-top: 20%;
    align-items: center;
-   gap: 20px;
-   background-color: red;
-   width: 800px;
-   padding: 40px;
    
    
-      form {
-         display: flex;
-         flex-direction: column;
-       
-         gap: 10px;
-         justify-content: center;
 
-         label {
-            
-            font-size: 1.5rem;
-         }
-
-         input {
-           width: max-content;
-            padding: 0px 50px 10px 5px;
-            
-            border: none;
-            border-bottom: 1px solid gray;
-            outline: none;
-         }
-
-         button {
-            padding: 10px;
-           
-            border-radius: 5px;
-            border: none;
-            background-color: teal;
+   .Login {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15%;
+      gap: 10px;  
+      background-color: $blue3;
+      width: 400px;
+      height: 450px;
+      border-radius: 8px;
+      
+      
+         h1 {
             color: white;
-            font-weight: bold;
-            cursor: pointer;
+            text-align: center;;
+            font-size: 3rem;
+            padding-bottom: 14px;
          }
 
-         .checkLabel{
+         p {
+            color: white;
             display: flex;
-            align-items: center;
-            font-size: 1.2rem;
-            gap: 4px;
+            justify-content: flex-end;
          }
-      }
-   
 
+         a {
+            color: $blue4;
+            text-decoration: underline;
+         }
+      
+         form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+          
+            gap: 20px;
+            
+   
+            label {
+               color: white;
+               font-size: 1.5rem;
+            }
+   
+            input {
+              
+               padding: 0px 50px 10px 5px;
+               background-color: $blue3;
+              color: white;
+               border: none;
+               border-bottom: 1px solid rgb(255, 255, 255);
+               outline: none;
+
+               &::placeholder{
+                  color: rgba(255, 255, 255, 0.452);
+               }
+            }
+   
+            button {
+               padding: 10px;
+              margin-top: 15px;
+               border-radius: 5px;
+               border: none;
+               background-color: $color-btn;
+               color: white;
+               font-weight: bold;
+               cursor: pointer;
+               
+
+               &:hover {
+                  background-color: $blue4;
+               }
+            }
+   
+            .checkLabel{
+               display: flex;
+               align-items: center;
+               justify-content: flex-start;
+               font-size: 1.2rem;
+               gap: 4px;
+            }
+         }
+      
+   
+   }
 }

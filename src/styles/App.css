@@ -1,43 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
-.Login {
+.containerLogin {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  margin-top: 20%;
   align-items: center;
-  gap: 20px;
-  background-color: red;
-  width: 800px;
-  padding: 40px;
 }
-.Login form {
+.containerLogin .Login {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
   justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+  gap: 10px;
+  background-color: #7fa9cf;
+  width: 400px;
+  height: 450px;
+  border-radius: 8px;
 }
-.Login form label {
+.containerLogin .Login h1 {
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+  padding-bottom: 14px;
+}
+.containerLogin .Login p {
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+.containerLogin .Login a {
+  color: #435D75;
+  text-decoration: underline;
+}
+.containerLogin .Login form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.containerLogin .Login form label {
+  color: white;
   font-size: 1.5rem;
 }
-.Login form input {
-  width: max-content;
+.containerLogin .Login form input {
   padding: 0px 50px 10px 5px;
+  background-color: #7fa9cf;
+  color: white;
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(255, 255, 255);
   outline: none;
 }
-.Login form button {
+.containerLogin .Login form input::placeholder {
+  color: rgba(255, 255, 255, 0.452);
+}
+.containerLogin .Login form button {
   padding: 10px;
+  margin-top: 15px;
   border-radius: 5px;
   border: none;
-  background-color: teal;
+  background-color: #4072A0;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
-.Login form .checkLabel {
+.containerLogin .Login form button:hover {
+  background-color: #435D75;
+}
+.containerLogin .Login form .checkLabel {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   font-size: 1.2rem;
   gap: 4px;
 }
