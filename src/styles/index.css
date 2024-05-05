@@ -7,7 +7,7 @@ a {
   margin: 0;
   box-sizing: border-box;
   padding: 0;
-  transition: all .3s ease-in-out;
+  
 
 }
 
@@ -17,8 +17,11 @@ html {
   font-weight: 400;
   font-style: normal;
   font-optical-sizing: auto;
-  width: 100vw;
+  
   height: 100vh;
+  width: 100vw;
+  
+  
 
 }
 

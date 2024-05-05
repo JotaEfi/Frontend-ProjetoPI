@@ -1,20 +1,39 @@
 import { useState } from "react"
+import { useLocation } from "react-router-dom"
+import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 function Login () {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
+
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState("");
+  
+    useEffect(() => {
+      setActiveTab(location.pathname);
+    }, [location.pathname]);
+  
+    const handleTabClick = (path) => {
+      setActiveTab(path);
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault()
-
-        alert("Enviando os dados: " + username + " - " + password)
+        
+        window.location.href = "/home";
+       
     }
+
+   
     return (
         <div className="containerLogin">
             <div className="Login">
+
                <form onSubmit={handleSubmit}>
                     <h1>Login</h1>
-                    <label for="email">E-mail:</label>
+                    <label htmlFor="email">E-mail:</label>
                     <div>
                         <input
                             id="email" name="email"
@@ -22,16 +41,18 @@ function Login () {
                             placeholder="Digite seu e-mail"
                             onChange={(e) => setUsername(e.target.value)}
                             autoComplete="false"
+                            required
                         />
                     </div>
             
-                    <label for="password">Senha:</label>
+                    <label htmlFor="password">Senha:</label>
                     <div>
                         <input
                              id="password" name="password"
                              type="password"
                              placeholder="Digite sua senha"
                              onChange={(e) => setPassword(e.target.value)}
+                             required
                         />
                     </div>
                     <div className="recall-forget">
@@ -42,14 +63,22 @@ function Login () {
             
                     </div>
                    
-                    <button type="submit">Entrar</button>
+                    <button type="submit">
+                        <Link to="/home"></Link> Entrar
+                    </button>
 
-                    <p>Não tem uma conta? <a href="#"> Registre-se</a></p>
+                    <p>Não tem uma conta?
+                        <a href="register"
+                        to="/"
+                        id="register"
+                        className={activeTab === "/register" ? "active" : ""}
+                        onClick={() => handleTabClick("/register")}>
+                        Registre-se</a></p>
+                         
                </form>
             </div>
         </div>
     )
 }
-//CENTRALIZAR DIV E FAZER ROUTER
-//CRIAR REGISTRO E TAMBÉM ROUTER PARA LOGIN OU TELA INICIAL
+
 export default Login

@@ -7,6 +7,7 @@ function Home() {
   return (
     <div className="page_container">
       <Navbar />
+      
     </div>
   );
 }
