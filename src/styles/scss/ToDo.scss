@@ -1,0 +1,64 @@
+.toDoContainer {
+    display: flex;
+    gap: 100px;
+    
+    
+   
+}
+
+
+
+.tasksComponents {
+    -webkit-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
+-moz-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
+box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
+    
+    @mixin customs ($font-size, $color, $border-radius, $padding, $background-color ){
+        font-size: $font-size;
+        color: $color;
+        border-radius: $border-radius;
+        padding: $padding;
+        background-color: $background-color;
+     }
+      
+     @include customs(1rem, white, 12px, 15px, $blue3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+   width: 400px;
+   min-height: 500px;
+   max-height: 600px;
+   
+   h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    }
+
+    .btnTask {
+        @include customs(1.5rem, white, 6px, 10px, $blue4);
+        border: none;
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: auto;
+    }
+   
+
+   .tasks {
+        max-height: 200px;
+        @include customs(1.5rem, white, 6px, 10px, $blue4);
+
+        .taskName {
+            font-size: 2rem;
+        }
+
+        .descTask {
+            padding: 0px 10px;
+            color: rgba(255, 255, 255, 0.671);
+
+        }
+    
+   }
+}
+

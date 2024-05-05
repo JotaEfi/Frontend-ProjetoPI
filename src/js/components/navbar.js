@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import ProjectLogo from "../../assets/img/monza-logo4.png";
 import { IoIosSearch } from "react-icons/io";
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:621520092.
 
 const Navbar = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const Navbar = () => {
 
   return (
     <nav className="nav-bar inter-font900">
+
       <button>
         <img src={ProjectLogo} alt="" style={{ width: "150px" }} />
       </button>

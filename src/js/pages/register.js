@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 
 function Register () {
     const [username, setUsername] = useState("")
+    const [name, setName] = useState("")
     const [password, setPassword] = useState("")
 
     const location = useLocation();
@@ -20,7 +21,8 @@ function Register () {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        
+
+        window.alert(name + " - " + username + " - " + password)
         window.location.href = "/home";
        
     }
@@ -30,7 +32,7 @@ function Register () {
             <div className="Login">
                  <form onSubmit={handleSubmit}>
                         <h1 className="title">Registro</h1>
-                        <h2 className="subtitle">Bem Vindo!</h2>
+                        <h2 className="subtitle">Bem Vindo ao Monza96!</h2>
 
                         <label for="name">Nome:</label>
                         <div>
@@ -38,7 +40,7 @@ function Register () {
                                 id="name" name="name"
                                 type="text"
                                 placeholder="Digite seu nome"
-                                onChange={(e) => setUsername(e.target.value)}
+                                onChange={(e) => setName(e.target.value)}
                                 autoComplete="false"
                                 required
                             />
