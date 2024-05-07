@@ -7,7 +7,7 @@ import ToDoComponents from "../components/toDoComponents.js";
 
 function Home() {
   return (
-    <div className="page_container">
+    <div className="pageContainer">
       <Navbar />
       <div class="toDoContainer">
         <ToDoComponents />

@@ -18,8 +18,7 @@ html {
   font-style: normal;
   font-optical-sizing: auto;
   
-  height: 100vh;
-  width: 100vw;
+
   
   
 
@@ -60,3 +59,7 @@ body {
   background-color: #555;
 }
 
+.pageContainer {
+  padding: 15rem 5rem 0 5rem;
+
+}

@@ -2,8 +2,6 @@
 .containerLogin {
   display: flex;
   justify-content: center;
-  margin-top: 50vh;
-  transform: translate(0, -50%);
   align-items: center;
 }
 .containerLogin .Login {
@@ -23,6 +21,7 @@
   color: white;
   text-align: center;
   font-size: 3rem;
+  user-select: none;
 }
 .containerLogin .Login h2 {
   color: white;
@@ -33,7 +32,9 @@
 .containerLogin .Login p {
   color: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  user-select: none;
+  gap: 5px;
 }
 .containerLogin .Login a {
   color: #435D75;
@@ -48,6 +49,7 @@
 .containerLogin .Login form label {
   color: white;
   font-size: 1.5rem;
+  user-select: none;
 }
 .containerLogin .Login form input {
   padding: 0px 50px 10px 5px;
@@ -56,6 +58,8 @@
   border: none;
   border-bottom: 1px solid rgb(255, 255, 255);
   outline: none;
+    transition-delay: .2s;
+
 }
 .containerLogin .Login form input::placeholder {
   color: rgba(255, 255, 255, 0.452);
@@ -95,7 +99,7 @@
   -webkit-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
   -moz-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
   box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
-  transition-duration: 0.5s;
+  transition-duration: 0.1s;
 }
 .nav-bar .logo {
   background-color: rgb(88, 88, 88);
@@ -138,7 +142,7 @@
   background-color: white;
   visibility: hidden;
   transform: scaleX(0);
-  transition: all 0.4s ease-in-out 0s;
+  transition: all 0.1s ease-in-out 0s;
 }
 .nav-bar ul a:hover:before {
   visibility: visible;
@@ -170,7 +174,15 @@
 
 .toDoContainer {
   display: flex;
-  gap: 100px;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tasksComponents {
@@ -185,8 +197,9 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 400px;
-  min-height: 500px;
+  width: 25vw;
+  max-width: 270px;
+  min-height: 200px;
   max-height: 600px;
 }
 .tasksComponents h2 {
@@ -211,14 +224,14 @@
   font-size: 1.5rem;
   color: white;
   border-radius: 6px;
-  padding: 10px;
+  padding: 15px;
   background-color: #435D75;
 }
 .tasksComponents .tasks .taskName {
   font-size: 2rem;
 }
 .tasksComponents .tasks .descTask {
-  padding: 0px 10px;
+  padding: 0px;
   color: rgba(255, 255, 255, 0.671);
 }
 

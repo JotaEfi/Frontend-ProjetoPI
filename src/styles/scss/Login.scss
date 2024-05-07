@@ -5,9 +5,8 @@
    
    display: flex;
    justify-content: center;
-   margin-top: 50vh;
-   transform: translate(0, -50%);
    align-items: center;
+
    
    
 
@@ -30,6 +29,8 @@
             color: white;
             text-align: center;;
             font-size: 3rem;
+            user-select:none;
+            
          }
          h2{
             color: white;
@@ -42,7 +43,9 @@
          p {
             color: white;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
+            user-select:none;
+            gap: 5px;
          }
 
          a {
@@ -61,6 +64,7 @@
             label {
                color: white;
                font-size: 1.5rem;
+               user-select:none;
             }
    
             input {

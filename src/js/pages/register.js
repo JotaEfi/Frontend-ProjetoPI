@@ -28,7 +28,7 @@ function Register () {
     }
 
     return(
-        <div className="containerLogin">
+        <div className="containerLogin pageContainer">
             <div className="Login">
                  <form onSubmit={handleSubmit}>
                         <h1 className="title">Registro</h1>
