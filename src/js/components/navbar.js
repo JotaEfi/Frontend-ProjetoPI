@@ -55,17 +55,17 @@ const Navbar = () => {
         </a>
       </ul>
 
-      <div class="box">
+      <div className="box">
         <IoIosSearch className="search_icon" />
         <form name="search">
           <input
             type="text"
-            class="input"
+            className="input"
             name="txt"
-            onmouseout="this.value = ''; this.blur();"
+  
           />
         </form>
-        <i class="fas fa-search"></i>
+        <i className="fas fa-search"></i>
       </div>
     </nav>
   );

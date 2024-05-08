@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className="pageContainer">
       <Navbar />
-      <div class="toDoContainer">
+      <div className="toDoContainer">
         <ToDoComponents />
         <ToDoComponents />
         <ToDoComponents />

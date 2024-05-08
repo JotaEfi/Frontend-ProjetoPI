@@ -1,11 +1,23 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
 import { useEffect } from "react"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
+import axios from 'axios'
 
 function Login () {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+      };
+    
+      // mudança no campo de senha
+      const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+      };
+
 
 
     const location = useLocation();
@@ -19,10 +31,33 @@ function Login () {
       setActiveTab(path);
     };
 
+    //funçao para enviar os dados
     const handleSubmit = (event) => {
         event.preventDefault()
-        
-        window.location.href = "/home";
+
+        const formData = {
+            username: username,
+            password: password
+          };
+      
+          axios.post('http://localhost:8080/auth/login', formData, {
+           headers: {
+            'Content-Type': 'application/json'
+          }
+          })
+          
+            .then(response => {
+              if (!response.data) { //retorno
+                throw new Error('Credenciais inválidas');
+              }
+              // resposta do backend 
+              console.log(response.data);
+              window.location.href = '/home'; // redireciona o usuário para outra página após o login ok
+            })
+
+            .catch(error => {
+              setErrorMessage(error.message);// msg erro
+            });
        
     }
 
@@ -38,9 +73,9 @@ function Login () {
                         <input
                             id="email" name="email"
                             type="email"
+                            value={username}
                             placeholder="Digite seu e-mail"
-                            onChange={(e) => setUsername(e.target.value)}
-                            autoComplete="false"
+                            onChange={handleUsernameChange}
                             required
                         />
                     </div>
@@ -50,11 +85,13 @@ function Login () {
                         <input
                              id="password" name="password"
                              type="password"
+                             value={password}
                              placeholder="Digite sua senha"
-                             onChange={(e) => setPassword(e.target.value)}
+                             onChange={handlePasswordChange}
                              required
                         />
                     </div>
+                    {errorMessage && <p>{errorMessage}</p>}
                     <div className="recall-forget">
                         <label className="checkLabel">
                             <input type="checkbox"/>
@@ -64,7 +101,7 @@ function Login () {
                     </div>
                    
                     <button type="submit">
-                        <Link to="/home"></Link> Entrar
+                       Entrar
                     </button>
 
                     <p>Não tem uma conta?
