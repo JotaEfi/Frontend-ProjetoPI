@@ -1,0 +1,25 @@
+.home_container {
+    padding-top: 80px;
+    display: flex;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+
+
+    .section_project {
+        padding: 50px;
+    }
+}
+
+.background_image {
+    width: 100vw;
+    /* Define a largura da imagem igual à largura da tela */
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+    left: 0;
+
+    top: 0;
+    z-index: -2;
+    transition: background-size 0.3s;
+}

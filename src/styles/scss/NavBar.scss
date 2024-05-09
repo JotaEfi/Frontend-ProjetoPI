@@ -3,19 +3,28 @@
 //cria um arquivo sass para cada tela ou componente
 
 .nav-bar {
-    top: 0;
-    position: fixed;
     width: 100%;
-    display: flex;
-    gap: 5%;
+    top: 15px;
+    position: fixed;
     align-items: center;
-    justify-content: space-around;
     z-index: 2;
-    padding: 20px 30px;
+}
+
+.nav-bar .nav_container {
+    height: 80px;
     background: $blue3;
-    -webkit-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
--moz-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
+    -webkit-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+    box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+    display: flex;
+    max-width: 1080px;
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+
     transition-duration: 0.5s;
 
     .logo {
@@ -26,30 +35,32 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
 
     button {
         border: none;
+        width: 200px;
+        background: none;
     }
 
     ul {
-        justify-content:space-evenly;
+        justify-content: space-evenly;
         display: flex;
         align-items: center;
         width: 50%;
         max-width: 123rem;
-        
+
         a {
             border-bottom: 4px transparent solid;
             font-family: Arial, Helvetica, sans-serif;
             font-optical-sizing: auto;
+            border-radius: 5px;
             font-weight: 100;
             font-style: normal;
             border: 4px;
             position: relative;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             color: rgb(255, 255, 255);
-            
             margin-bottom: 2px;
             text-align: center;
-            text-transform: uppercase;  
+            text-transform: uppercase;
             transition: all .5s ease-in-out;
 
             &:before {
@@ -58,23 +69,24 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
                 width: 100%;
                 height: 2px;
                 bottom: 0;
-                margin: -10px 0;
+                margin: -10px 0px;
                 background-color: white;
                 visibility: hidden;
                 transform: scaleX(0);
                 transition: all 0.1s ease-in-out 0s;
             }
+
             &:hover:before {
                 visibility: visible;
                 transform: scaleX(1);
             }
         }
     }
-  }
+}
 
 
-  //nao sei de onde é
-  .nav-bar-laterals {
+//nao sei de onde é
+.nav-bar-laterals {
     font-weight: 900;
     width: 100%;
     height: 100%;
@@ -90,11 +102,17 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
         font-size: 12px;
     }
 
-    &:hover{
-            color: rgb(164, 126, 56);
-            border: 2px;
-            transition-duration: 0.2s;
-            border: 2px rgba(255, 255, 255, 0.218) solid;
-            border-radius: 5px;
+    &:hover {
+        color: rgb(164, 126, 56);
+        border: 2px;
+        transition-duration: 0.2s;
+        border: 2px rgba(255, 255, 255, 0.218) solid;
+        border-radius: 5px;
     }
-  }
+}
+
+.box {
+    cursor: pointer;
+    width: 200px;
+    justify-content: end;
+}

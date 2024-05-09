@@ -18,54 +18,66 @@ const Navbar = () => {
   const handleTabClick = (path) => {
     setActiveTab(path);
   };
-
+  
   return (
     <nav className="nav-bar inter-font900">
+      <div className="nav_container">
+        <button>
+          <a href="home" to="/" id="home">
+            <img src={ProjectLogo} alt="" style={{ width: "150px" }} />
+          </a>
+        </button>
+        <ul>
+          <a
+            href="home"
+            to="/"
+            id="home"
+            className={activeTab === "/" ? "active" : ""}
+            onClick={() => handleTabClick("/")}
+          >
+            Recent
+          </a>
+          <a
+            href="home"
+            to="/"
+            id="home"
+            className={activeTab === "/" ? "active" : ""}
+            onClick={() => handleTabClick("/")}
+          >
+            Workspaces
+          </a>
+          <a
+            href="loja"
+            to="/loja"
+            id="loja"
+            className={activeTab === "/loja" ? "active" : ""}
+            onClick={() => handleTabClick("/loja")}
+          >
+            Como Funciona?
+          </a>{" "}
+          <a
+            href="login"
+            to="/login"
+            id="login"
+            className={activeTab === "/login" ? "active" : ""}
+            onClick={() => handleTabClick("/login")}
+          >
+            Sair
+          </a>
+        </ul>
 
-      <button>
-        <img src={ProjectLogo} alt="" style={{ width: "150px" }} />
-      </button>
-      <ul>
-        <a
-          href="home"
-          to="/"
-          id="home"
-          className={activeTab === "/" ? "active" : ""}
-          onClick={() => handleTabClick("/")}
-        >
-          Página Inicial
-        </a>
-        <a
-          href="loja"
-          to="/loja"
-          id="loja"
-          className={activeTab === "/loja" ? "active" : ""}
-          onClick={() => handleTabClick("/loja")}
-        >
-          Loja
-        </a>{" "}
-        <a
-          href="funciona"
-          to="/funciona"
-          id="funciona"
-          className={activeTab === "/funciona" ? "active" : ""}
-          onClick={() => handleTabClick("/funciona")}
-        >
-          Como Funciona?
-        </a>
-      </ul>
-
-      <div class="box">
-        <IoIosSearch className="search_icon" />
-        <form name="search">
-          <input
-            type="text"
-            class="input"
-            name="txt"
-            onmouseout="this.value = ''; this.blur();"
-          />
-        </form>
-        <i class="fas fa-search"></i>
+        <div class="box">
+          <IoIosSearch className="search_icon" />
+          <form name="search">
+            <input
+              type="text"
+              class="input"
+              name="txt"
+              onmouseout="this.value = ''; this.blur();"
+            />
+          </form>
+          <i class="fas fa-search"></i>
+        </div>
       </div>
     </nav>
   );
