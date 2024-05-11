@@ -1,25 +1,16 @@
 import Home from "./js/pages/home.js";
 import React from "react";
 import Login from "./js/pages/login.js";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Register from "./js/pages/register.js";
+import { AuthProvider } from "./context/auth.js";
+import { AppRouter } from "./routes/routes.js";
 function App() {
   return (
   
-    
-    
-    /* <Register />*/
-    
-    <BrowserRouter>
-    
-      <Routes>
-        <Route path="/auth/login" element={<Login />} />
-        <Route path="/" element={<Register />} />
-        <Route path="/home" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
-
-    
+  
+    <AuthProvider>
+      <AppRouter/>
+    </AuthProvider>
+  
   );
 }
 
