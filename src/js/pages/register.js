@@ -23,12 +23,17 @@ function Register () {
 
         try {
             const response = await api.post("/auth/register", userData); // Ajuste para a rota de registro
-            const { token, user } = response.data;
+            // const { token, user } = response.data;
 
-            localStorage.setItem("@Auth:token", token); //VERIFICAR ISSO
-            localStorage.setItem("@Auth:user", JSON.stringify(response.config.data.userData)); //VERIFICAR ISSO
+
+            // localStorage.setItem("@Auth:token", token); //VER ISSO
+            // localStorage.setItem("@Auth:user", JSON.stringify(response.config.data.userData)); //VER ISSO
             // localStorage.setItem(userData)
-            console.log(response.config.data); //RESPONSE PARA VER OS DADOS
+
+
+            console.log(response); //RESPONSE PARA VER OS DADOS
+
+
         } catch (error) {
             console.error('Erro ao tentar registrar usuário:', error);
             // Tratar o erro de acordo com as necessidades da sua aplicação
