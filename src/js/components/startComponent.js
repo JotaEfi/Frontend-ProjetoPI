@@ -43,7 +43,7 @@ function ToDoComponents() {
         ))}
       </div>
 
-      <div>
+      <div className="tasks_component">
         <input
           type="text"
           value={newTaskTitle}
@@ -55,6 +55,7 @@ function ToDoComponents() {
           onChange={handleNewTaskBodyChange}
           placeholder="Descrição da Nova Task"
         ></textarea>
+
         <button className="btnTask" onClick={handleAddTask}>
           + Nova Task
         </button>

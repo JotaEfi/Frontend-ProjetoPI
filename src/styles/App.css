@@ -101,7 +101,7 @@
   display: flex;
   max-width: 1080px;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -126,6 +126,7 @@
   max-width: 123rem;
 }
 .nav-bar .nav_container ul a {
+  margin: 5px;
   border-bottom: 4px transparent solid;
   font-family: Arial, Helvetica, sans-serif;
   font-optical-sizing: auto;
@@ -203,57 +204,6 @@
   align-items: center;
 }
 
-.tasksComponents {
-  -webkit-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
-  -moz-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
-  box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
-  font-size: 1rem;
-  color: white;
-  border-radius: 12px;
-  padding: 15px;
-  background-color: #7fa9cf;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.tasksComponents h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-.tasksComponents .btnTask {
-  font-size: 1.5rem;
-  color: white;
-  border-radius: 6px;
-  padding: 10px;
-  background-color: #435D75;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: auto;
-}
-.tasksComponents .tasks {
-  max-height: 200px;
-  font-size: 1.5rem;
-  color: white;
-  border-radius: 6px;
-  padding: 15px;
-  background-color: #435D75;
-}
-.tasksComponents .tasks .taskName {
-  font-size: 2rem;
-}
-.tasksComponents .tasks .descTask {
-  padding: 0px;
-  color: rgba(255, 255, 255, 0.671);
-}
-.tasksComponents .task {
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
 .home_container {
   padding-top: 80px;
   display: flex;
@@ -266,15 +216,105 @@
 }
 
 .background_image {
-  width: 100vw;
+  width: 100%;
   /* Define a largura da imagem igual à largura da tela */
-  height: 100vh;
+  height: 100%;
   position: fixed;
   z-index: -1;
   left: 0;
+  object-fit: cover;
   top: 0;
   z-index: -2;
   transition: background-size 0.3s;
+}
+
+.tasksComponents {
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+  font-size: 1rem;
+  color: white;
+  padding: 15px;
+  background-color: #7fa9cf;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.tasksComponents h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.tasksComponents .btnTask {
+  border-radius: 5px;
+  font-size: 1.5rem;
+  color: white;
+  padding: 10px;
+  background-color: #435D75;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+.tasksComponents .tasks {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 200px;
+  font-size: 1.5rem;
+  color: white;
+  padding: 0px;
+  background-color: none;
+}
+.tasksComponents .tasks .taskName {
+  font-size: 2rem;
+}
+.tasksComponents .tasks .descTask {
+  padding: 0px;
+  color: rgba(255, 255, 255, 0.671);
+}
+.tasksComponents .task {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.tasks_component {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tasks_component textarea, .tasks_component input {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.white_space {
+  height: 100%;
+  background-color: white;
+  position: fixed;
+  width: 1080px;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  transform: translate(-50%, 15px);
+  -webkit-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 9px 45px -14px rgba(0, 0, 0, 0.41);
+}
+
+.pageContainer {
+  display: flex;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=App.css.map */

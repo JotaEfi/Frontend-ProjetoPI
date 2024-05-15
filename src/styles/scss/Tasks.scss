@@ -1,0 +1,77 @@
+.tasksComponents {
+    border-radius: $border-radius;
+
+    -webkit-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
+-moz-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
+box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
+    @mixin customs ($font-size, $color, $padding, $background-color ){
+        font-size: $font-size;
+        color: $color;
+        padding: $padding;
+        background-color: $background-color;
+     }
+      
+     @include customs(1rem, white, 15px, $blue3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+   
+   h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    }
+
+    .btnTask {
+    border-radius: $border-radius;
+
+        @include customs(1.5rem, white, 10px, $blue4);
+        border: none;
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: auto;
+    }
+   
+
+   .tasks {
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+        max-height: 200px;
+        
+        @include customs(1.5rem, white, 0px, none);
+        .taskName {
+            font-size: 2rem;
+        }
+
+        .descTask {
+            padding: 0px;
+            color: rgba(255, 255, 255, 0.671);
+
+        }
+    
+   }
+   .task {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: $border-radius;
+  }
+}
+
+.tasks_component {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    textarea, input{
+        width: 100%;
+     background-color: rgba(255,255,255,1);
+        border: none;
+        border-radius: $border-radius;
+        padding: 10px;
+
+    }
+    
+}

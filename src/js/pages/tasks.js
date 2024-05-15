@@ -6,13 +6,13 @@ import WaitingComponent from "../components/waitingComponent.js";
 import StartComponent from "../components/startComponent.js";
 import FinishedComponent from "../components/finishedComponent.js";
 import backgroundImage from "../../assets/img/site-background.jpg";
-
+import { Textarea } from "@chakra-ui/react";
 
 function Home() {
   return (
     <div className="pageContainer">
       <img className="background_image" src={backgroundImage} alt="" />
-
+      <div className="white_space"></div>
       <Navbar />
       <section className="toDoContainer">
         <StartComponent />

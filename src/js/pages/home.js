@@ -6,6 +6,9 @@ export default function Home() {
     return (
         <div className="home">
             <img className="background_image" src={backgroundImage} alt="" />
+            <div className="white_space">
+                
+            </div>
             <Navbar />
             <div className="home_container">
                 <section className="section_project">

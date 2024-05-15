@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import ProjectLogo from "../../assets/img/monza-logo4.png";
 import { IoIosSearch } from "react-icons/io";
+import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:621520092.
 
 const Navbar = () => {
@@ -18,7 +19,7 @@ const Navbar = () => {
   const handleTabClick = (path) => {
     setActiveTab(path);
   };
-  
+
   return (
     <nav className="nav-bar inter-font900">
       <div className="nav_container">

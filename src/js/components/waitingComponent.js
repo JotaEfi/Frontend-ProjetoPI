@@ -1,22 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 
-const TaskProps = {
-  id: 0,
-  title: "",
-  body: "",
-  situation: 0,
-};
+function ToDoComponents() {
+  const [tasks, setTasks] = useState([]);
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [newTaskBody, setNewTaskBody] = useState("");
 
-function ToDoComponents({ state, id, title, body, situation }) {
+  const handleNewTaskTitleChange = (event) => {
+    setNewTaskTitle(event.target.value);
+  };
+
+  const handleNewTaskBodyChange = (event) => {
+    setNewTaskBody(event.target.value);
+  };
+
+  const handleAddTask = () => {
+    if (!newTaskBody.trim()) {
+      // Se a textarea estiver vazia ou contiver apenas espaços em branco, não faça nada
+      return;
+    }
+
+    const newTask = {
+      id: tasks.length + 1,
+      title: newTaskTitle,
+      body: newTaskBody,
+      situation: 0,
+    };
+
+    setTasks([...tasks, newTask]);
+    setNewTaskTitle("");
+    setNewTaskBody("");
+  };
+
   return (
     <div className="tasksComponents">
       <h2>Em andamento</h2>
       <div className="tasks">
-        <p className="taskName">{title}</p>
-        <p className="descTask">{body}</p>
+        {tasks.map((task) => (
+          <div key={task.id} className="task">
+            <p className="taskName">{task.title}</p>
+            <p className="descTask">{task.body}</p>
+          </div>
+        ))}
       </div>
 
-      <button className="btnTask">+ Nova Task</button>
+      <div className="tasks_component">
+        <input
+          type="text"
+          value={newTaskTitle}
+          onChange={handleNewTaskTitleChange}
+          placeholder="Título da Nova Task"
+        />
+        <textarea
+          value={newTaskBody}
+          onChange={handleNewTaskBodyChange}
+          placeholder="Descrição da Nova Task"
+        ></textarea>
+
+        <button className="btnTask" onClick={handleAddTask}>
+          + Nova Task
+        </button>
+      </div>
     </div>
   );
 }
