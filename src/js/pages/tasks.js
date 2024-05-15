@@ -7,6 +7,7 @@ import StartComponent from "../components/startComponent.js";
 import FinishedComponent from "../components/finishedComponent.js";
 import backgroundImage from "../../assets/img/site-background.jpg";
 import { Textarea } from "@chakra-ui/react";
+import Footer from "../components/footer.js"
 
 function Home() {
   return (
@@ -19,6 +20,7 @@ function Home() {
         <WaitingComponent />
         <FinishedComponent />
       </section>
+      <Footer />
     </div>
   );
 }

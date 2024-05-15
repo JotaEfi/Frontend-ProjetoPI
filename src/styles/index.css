@@ -17,10 +17,6 @@ html {
   font-weight: 400;
   font-style: normal;
   font-optical-sizing: auto;
-  
-
-  
-  
 
 }
 
@@ -58,8 +54,11 @@ body {
 *::-moz-scrollbar-thumb:hover {
   background-color: #555;
 }
-
-.pageContainer {
-  padding: 15rem 5rem 0 5rem;
-
+.nav_container button a{
+filter: invert();
+}
+.nav_container button a:hover {
+  filter: none;
+  transition-duration: .2s;
+ 
 }

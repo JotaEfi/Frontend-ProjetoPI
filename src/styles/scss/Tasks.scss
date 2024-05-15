@@ -1,6 +1,6 @@
 .tasksComponents {
     border-radius: $border-radius;
-
+    position: relative;
     -webkit-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
 -moz-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
 box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
@@ -17,7 +17,7 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
     gap: 15px;
    
    h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     }
 
@@ -39,15 +39,16 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
     display: flex;
     flex-direction: column;
     gap: 5px;
-        max-height: 200px;
         
         @include customs(1.5rem, white, 0px, none);
         .taskName {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
 
         .descTask {
             padding: 0px;
+        font-size: 1rem;
+
             color: rgba(255, 255, 255, 0.671);
 
         }
@@ -58,10 +59,13 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
     padding: 10px;
     background-color: rgba(0,0,0,0.3);
     border-radius: $border-radius;
+
+    
   }
 }
 
 .tasks_component {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -74,4 +78,14 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
 
     }
     
+}
+
+.toDoContainer {
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1080px;
+    gap: 20px;
+   
 }
