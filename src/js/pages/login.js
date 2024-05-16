@@ -1,33 +1,38 @@
-import { useContext, useState } from "react"
-import { useLocation } from "react-router-dom"
-import { useEffect } from "react"
-import { Navigate } from "react-router-dom"
-// import { Link } from "react-router-dom"
-import axios from 'axios'
-import { AuthContext } from "../../context/auth"
+import {  useState } from "react"
+// import { useLocation } from "react-router-dom"
+// import { useEffect } from "react"
+// import { Navigate } from "react-router-dom"
+// // import { Link } from "react-router-dom"
+// import axios from 'axios'
+// import { AuthContext } from "../../context/auth"
+import { api } from "../../services/api";
 
 function Login () {
     const [email, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState('');
-    const { signIn, signed } = useContext(AuthContext)
+    // const { signIn, signed } = useContext(AuthContext)
 
 
     const handleSignIn = async (e) => {
       e.preventDefault();
       try {
-          await signIn(email, password);
-      } catch (error) {
-          setErrorMessage(error.message);
-      }
-  };
+        const authString = "Basic " + btoa(email + ":" + password);
+        const response = await api.get("/auth/login", { headers: { Authorization: authString } });
+        console.log(response);
+        localStorage.setItem('jwt', response.headers['authorization']);
+        console.log(response.headers['authorization'])
+    } catch (error) {
+        console.error('Erro ao fazer login:', error);
+        setErrorMessage(error.message);
+    }
+};
      
-    if(signed ) {
-      // return <Navigate  to="/home" />
-    } 
+    // if(signed ) {
+    //   // return <Navigate  to="/home" />
+    // //   console.log(email)
+    // } 
 
-    
-    
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);

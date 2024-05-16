@@ -2,9 +2,8 @@ import { useState } from "react"
 import { useLocation } from "react-router-dom"
 import { useEffect } from "react"
 // import { Link } from "react-router-dom"
-
-
-import { api } from "../../services/api"
+// import axios from "axios"
+import { signup } from "../../services/signup"
 
 function Register () {
     const [username, setUsername] = useState("")
@@ -22,18 +21,17 @@ function Register () {
         }
 
         try {
-            const response = await api.post("/auth/register", userData); // Ajuste para a rota de registro
-            // const { token, user } = response.data;
-
-
-            // localStorage.setItem("@Auth:token", token); //VER ISSO
-            // localStorage.setItem("@Auth:user", JSON.stringify(response.config.data.userData)); //VER ISSO
-            // localStorage.setItem(userData)
-
-
-            console.log(response); //RESPONSE PARA VER OS DADOS
-
-
+            await signup
+            .post("/auth/signup", {
+                email: userData.email,
+                password: userData.password,
+            }, 
+        )
+            .then((response) => {
+                console.log(response);
+                 
+            });
+           
         } catch (error) {
             console.error('Erro ao tentar registrar usuário:', error);
             // Tratar o erro de acordo com as necessidades da sua aplicação
