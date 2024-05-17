@@ -1,8 +1,6 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
 import { useEffect } from "react"
-// import { Link } from "react-router-dom"
-// import axios from "axios"
 import { signup } from "../../services/signup"
 
 function Register () {
@@ -17,7 +15,7 @@ function Register () {
      
             email, 
             password, 
-            
+        
         }
 
         try {
@@ -29,6 +27,7 @@ function Register () {
         )
             .then((response) => {
                 console.log(response);
+                window.location.href = '/home';
                  
             });
            
@@ -66,50 +65,6 @@ function Register () {
       setActiveTab(path);
     };
 
-    //funçao para enviar os dados
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-
-    //     const formData = {
-    //         email: username,
-    //         password: password
-    //       };
-      
-    //       axios.post('http://localhost:8080/auth/login', formData, {
-    //        headers: {
-    //         'Content-Type': 'application/json'
-    //       }
-    //       })
-          
-    //       .then(response => {
-    //         if (!response.data) {
-    //             throw new Error('Credenciais inválidas');
-    //         }
-    
-    //         // Verificar se o cabeçalho de autorização está presente na resposta
-    //         if (!response.headers || !response.headers.authorization) {
-    //             throw new Error('Cabeçalho de autorização ausente na resposta');
-    //         }
-    
-    //         // Extrair o token do cabeçalho de resposta
-    //         const authorizationHeader = response.headers.authorization;
-    //         const token = authorizationHeader.split('Bearer ')[1]; // Remover o prefixo "Bearer"
-            
-    //         // Armazenar o token no localStorage
-    //         localStorage.setItem('token', token);
-    
-    //         // Armazenar os dados do usuário (se necessário)
-    //         localStorage.setItem('userData', JSON.stringify(formData));
-    
-    //         console.log(response.data);
-    //         window.location.href = '/home'; // redirecionar o usuário para outra página após o login bem-sucedido
-    //     })
-    //     .catch(error => {
-    //         setErrorMessage(error.message);
-    //     })
-       
-    // }
-
    
     return (
         <div className="containerLogin pageContainer">
@@ -128,6 +83,7 @@ function Register () {
                             placeholder="Digite seu nome"
                             onChange={handleUsernameChange}
                             required
+                            autoComplete="off"
                         />
                     </div>
 
@@ -140,6 +96,7 @@ function Register () {
                             placeholder="Digite seu e-mail"
                             onChange={handleEmailChange}
                             required
+                            autoComplete="off"
                         />
                     </div>
             
@@ -152,6 +109,7 @@ function Register () {
                              placeholder="Digite sua senha"
                              onChange={handlePasswordChange}
                              required
+                             autoComplete="off"
                         />
                     </div>
                     {errorMessage && <p>{errorMessage}</p>}
@@ -168,11 +126,11 @@ function Register () {
                     </button>
 
                     <p>Já tem uma conta?
-                        <a href="login"
-                        to="/login"
+                        <a href="/auth/login"
+                        to="/auth/login"
                         id="login"
-                        className={activeTab === "/login" ? "active" : ""}
-                        onClick={() => handleTabClick("/login")}>
+                        className={activeTab === "/auth/login" ? "active" : ""}
+                        onClick={() => handleTabClick("/auth/login")}>
                         Faça o login</a></p>
                          
                </form>

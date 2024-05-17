@@ -1,16 +1,14 @@
 import {  useState } from "react"
-// import { useLocation } from "react-router-dom"
-// import { useEffect } from "react"
-// import { Navigate } from "react-router-dom"
-// // import { Link } from "react-router-dom"
-// import axios from 'axios'
-// import { AuthContext } from "../../context/auth"
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { api } from "../../services/api";
 
 function Login () {
     const [email, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState('');
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState("");
     // const { signIn, signed } = useContext(AuthContext)
 
 
@@ -19,20 +17,22 @@ function Login () {
       try {
         const authString = "Basic " + btoa(email + ":" + password);
         const response = await api.get("/auth/login", { headers: { Authorization: authString } });
-        console.log(response);
-        localStorage.setItem('jwt', response.headers['authorization']);
-        console.log(response.headers['authorization'])
+       
+        if (response && response.data === 'Successful' ){
+            console.log(response);
+            localStorage.setItem('jwt', response.headers['authorization']);
+            console.log(response.headers['authorization'])
+            window.location.href = '/home';
+        } else {
+            
+            throw new Error('Email ou senha incorretos');
+        }
     } catch (error) {
         console.error('Erro ao fazer login:', error);
         setErrorMessage(error.message);
     }
 };
      
-    // if(signed ) {
-    //   // return <Navigate  to="/home" />
-    // //   console.log(email)
-    // } 
-
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -42,51 +42,13 @@ function Login () {
       const handlePasswordChange = (event) => {
         setPassword(event.target.value);
       };
-
-
-
-    // const location = useLocation();
-    // const [activeTab, setActiveTab] = useState("");
-  
-    // useEffect(() => {
-    //   setActiveTab(location.pathname);
-    // }, [location.pathname]);
-
-   
-  
-    // const handleTabClick = (path) => {
-    //   setActiveTab(path);
-    // };
-
-    //funçao para enviar os dados
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-
-    //     const formData = {
-    //         username: username,
-    //         password: password
-    //       };
-      
-    //       axios.post('http://localhost:8080/auth/login', formData, {
-    //        headers: {
-    //         'Content-Type': 'application/json'
-    //       }
-    //       })
-          
-    //         .then(response => {
-    //           if (!response.data) { //retorno
-    //             throw new Error('Credenciais inválidas');
-    //           }
-    //           // resposta do backend 
-    //           console.log(response.data);
-             
-    //         })
-
-    //         .catch(error => {
-    //           setErrorMessage(error.message);// msg erro
-    //         });
-       
-    // }
+      useEffect(() => {
+        setActiveTab(location.pathname);
+      }, [location.pathname]);
+    
+      const handleTabClick = (path) => {
+        setActiveTab(path);
+      };
 
    
     return (
@@ -97,7 +59,7 @@ function Login () {
                     <h1>Login</h1>
                     <label htmlFor="email">E-mail:</label>
                     <div>
-                        <input
+                        <input className="inputError"
                             id="email" name="email"
                             type="email"
                             value={email}
@@ -111,7 +73,7 @@ function Login () {
             
                     <label htmlFor="password">Senha:</label>
                     <div>
-                        <input
+                        <input className="inputError"
                              id="password" name="password"
                              type="password"
                              value={password}
@@ -133,14 +95,12 @@ function Login () {
                        Entrar
                     </button>
 
-                    <p>Não tem uma conta?
-                        {/* <a href="register"
+                    <p>Já tem uma conta?
+                        <a href="/"
                         to="/"
-                        id="register"
-                        className={activeTab === "/register" ? "active" : ""}
-                        onClick={() => handleTabClick("/register")}>
-    </a> */}
-                       Registre-se</p> 
+                        className={activeTab === "/" ? "active" : ""}
+                        onClick={() => handleTabClick("/")}>
+                        Faça o cadastro</a></p>
                          
                </form>
             </div>
