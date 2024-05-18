@@ -43,23 +43,6 @@ function ToDoComponents() {
         ))}
       </div>
 
-      <div className="tasks_component">
-        <input
-          type="text"
-          value={newTaskTitle}
-          onChange={handleNewTaskTitleChange}
-          placeholder="Título da Nova Task"
-        />
-        <textarea
-          value={newTaskBody}
-          onChange={handleNewTaskBodyChange}
-          placeholder="Descrição da Nova Task"
-        ></textarea>
-
-        <button className="btnTask" onClick={handleAddTask}>
-          + Nova Task
-        </button>
-      </div>
     </div>
   );
 }

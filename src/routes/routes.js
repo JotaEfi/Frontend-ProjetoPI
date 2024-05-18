@@ -1,6 +1,7 @@
 import Login from "../js/pages/login"
 import Register from "../js/pages/register"
 import Home from "../js/pages/home"
+import Tasks from "../js/pages/tasks";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -10,6 +11,7 @@ export const AppRouter = () => {
             <Routes>
                 <Route path="/auth/login" element={<Login />} />
                 <Route path="/" element={<Register />} />
+                <Route path="/tasks" element={<Tasks />} />
                 <Route path="/home" element={<Home />} />
             </Routes>
         

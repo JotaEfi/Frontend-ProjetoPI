@@ -1,6 +1,10 @@
+@import './Var.scss';
+
 .tasksComponents {
     border-radius: $border-radius;
     position: relative;
+    height: fit-content;
+    min-height:130px;
     -webkit-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
 -moz-box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
 box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
@@ -42,22 +46,22 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
         
         @include customs(1.5rem, white, 0px, none);
         .taskName {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
         }
 
         .descTask {
             padding: 0px;
-        font-size: 1rem;
-
+        font-size: 1.3rem;
+            max-width:260px ;
+            word-wrap: break-word;
             color: rgba(255, 255, 255, 0.671);
 
         }
     
    }
    .task {
-    border: 1px solid #ccc;
     padding: 10px;
-    background-color: rgba(0,0,0,0.3);
+    background-color: $color-btn;
     border-radius: $border-radius;
 
     
@@ -69,13 +73,26 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     textarea, input{
+        outline: none;
         width: 100%;
-     background-color: rgba(255,255,255,1);
+        color: rgba(0, 0, 0, 0.567);
+     background-color: $blue1;
         border: none;
         border-radius: $border-radius;
         padding: 10px;
 
+    }
+
+    ::placeholder {
+        color: rgba(0, 0, 0, 0.567);
+    }
+    textarea{
+        max-width: 285px;
+        min-width: 285px;
+        min-height: 80px;
+        max-height: 80px;
     }
     
 }

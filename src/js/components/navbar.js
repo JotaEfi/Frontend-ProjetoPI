@@ -3,9 +3,8 @@ import "../../styles/styles.css";
 import "../../styles/queries.css";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import ProjectLogo from "../../assets/img/monza-logo4.png";
-import { IoIosSearch } from "react-icons/io";
-import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
+import ProjectLogo from "../../assets/img/monza-logo4.png"
+// import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:621520092.
 
 const Navbar = () => {
@@ -57,28 +56,17 @@ const Navbar = () => {
             Como Funciona?
           </a>{" "}
           <a
-            href="login"
-            to="/login"
+            href="/auth/login"
+            to="/auth/login"
             id="login"
-            className={activeTab === "/login" ? "active" : ""}
-            onClick={() => handleTabClick("/login")}
+            className={activeTab === "/auth/login" ? "active" : ""}
+            onClick={() => handleTabClick("/auth/login")}
           >
             Sair
           </a>
         </ul>
 
-        <div class="box">
-          <IoIosSearch className="search_icon" />
-          <form name="search">
-            <input
-              type="text"
-              class="input"
-              name="txt"
-              onmouseout="this.value = ''; this.blur();"
-            />
-          </form>
-          <i class="fas fa-search"></i>
-        </div>
+     
       </div>
     </nav>
   );
