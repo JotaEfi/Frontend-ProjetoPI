@@ -11,6 +11,11 @@ const Navbar = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("");
 
+  const handleLogout = (path) => {
+    localStorage.removeItem('jwt'); 
+    setActiveTab(path);
+  };
+
   useEffect(() => {
     setActiveTab(location.pathname);
   }, [location.pathname]);
@@ -60,7 +65,7 @@ const Navbar = () => {
             to="/auth/login"
             id="login"
             className={activeTab === "/auth/login" ? "active" : ""}
-            onClick={() => handleTabClick("/auth/login")}
+            onClick={() => handleLogout("/auth/login")}
           >
             Sair
           </a>
