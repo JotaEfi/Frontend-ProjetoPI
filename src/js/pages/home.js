@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/navbar.js";
 import backgroundImage from '../../assets/img/site-background.jpg';
+import Projeto from '../components/criarProjeto.js'
 
 export default function Home() {
 
@@ -11,16 +12,8 @@ export default function Home() {
                 
             </div>
             <Navbar />
-            <div className="projeto">
-                <button className="btnProject">
-                    <span className="btnAddProject">
-                        +
-                    </span>
-
-                    Novo projeto
-
-                </button>
-            </div>
+            <Projeto />
+           
     
         </div>
     )

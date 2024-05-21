@@ -366,6 +366,7 @@
   margin-top: 200px;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 .projeto .btnProject {
   height: 150px;
@@ -390,6 +391,15 @@
 }
 .projeto .btnProject span {
   font-size: 6rem;
+}
+.projeto .aaaa {
+  margin: 50px;
+  z-index: 2;
+  background-color: red;
+  color: wheat;
+}
+.projeto .aaaa select {
+  color: wheat;
 }
 
 /*# sourceMappingURL=App.css.map */
