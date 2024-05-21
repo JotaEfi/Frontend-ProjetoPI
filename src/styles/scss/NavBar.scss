@@ -20,10 +20,10 @@
     max-width: 1080px;
     margin: 0 auto;
     border-radius: $border-radius;
-
+    padding: 0 30px;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 5%;
 
     transition-duration: 0.5s;
@@ -57,10 +57,10 @@
             font-weight: 100;
             font-style: normal;
             border: 4px;
+            letter-spacing: 2px;
             position: relative;
             font-size: 15px;
             font-weight: 700;
-            color: rgb(255, 255, 255);
             margin-bottom: 2px;
             text-align: center;
             text-transform: uppercase;
@@ -118,4 +118,37 @@
     cursor: pointer;
     width: 200px;
     justify-content: end;
+   
+}
+.nav_user_profile{
+    display: flex;
+align-items: center;
+    .user_profile_picture{
+        border-radius: 50%;
+    width: 45px;
+    border: 2px solid rgb(44, 44, 44);
+    background-color: white;
+    height: 45px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center
+    }
+    .user_profile_name{
+        width:80px;
+        height: 30px;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        p {
+        background-color: rgb(235, 235, 235);
+        border-radius: 0 10px 10px 0;
+        transform: translate(-5px, 0);
+
+            padding: 8px 8px 8px 8px;
+            color: rgb(94, 94, 94);
+            font-size: 8px;
+        }
+
+    }
 }

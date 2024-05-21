@@ -42,7 +42,6 @@ function ToDoComponents() {
           </div>
         ))}
       </div>
-
     </div>
   );
 }
