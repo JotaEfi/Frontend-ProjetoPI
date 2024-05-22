@@ -11,12 +11,7 @@ function Projeto () {
     const [projects, setProjects] = useState([]);
 
     const handleNewProject = async () => {
-      // await signup
-      // .post("/auth/signup", {
-      //     email: userData.email,
-      //     password: userData.password,
-      // }
-    // const jwt = localStorage.getItem('jwt');
+   
     const projectData = {
         name: projectName,
         description: description,
@@ -37,7 +32,9 @@ function Projeto () {
         .then((response) => {
           console.log(response.data);
           console.log('deu ceerto');
-          window.location.href = '/tasks';
+          setProjects([...projects, response.data]); // Adiciona o novo projeto à lista de projetos
+      setShowModal(false);
+          // window.location.href = '/tasks'; colocar isso só no componente que for criado, no caso o select
        
         });
       } catch (error) {
@@ -71,6 +68,14 @@ function Projeto () {
 
         
       )}
+      <select>
+        <option value="">Selecione um projeto</option>
+        {projects.map((project, index) => (
+          <option key={index} value={project.name}>
+            {project.name}
+          </option>
+        ))}
+      </select>
       
     </div>
     )
