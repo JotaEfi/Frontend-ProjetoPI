@@ -1,6 +1,8 @@
 import React from "react"
 import { useState } from "react"
 import { api } from "../../services/api";
+import ProjectContext from "./projectContext";
+import { useEffect } from "react";
 
 function Projeto () {
     const [showModal, setShowModal] = useState(false);
@@ -9,6 +11,29 @@ function Projeto () {
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
     const [projects, setProjects] = useState([]);
+    
+    // Função para salvar os projetos no localStorage
+    const saveProjectsToLocalStorage = (projects) => {
+      localStorage.setItem('projects', JSON.stringify(projects));
+  };
+
+  // Função para carregar os projetos do localStorage
+  const loadProjectsFromLocalStorage = () => {
+      const savedProjects = localStorage.getItem('projects');
+      if (savedProjects) {
+          setProjects(JSON.parse(savedProjects));
+      }
+  };
+
+  useEffect(() => {
+      loadProjectsFromLocalStorage();
+  }, []);
+
+  const handleProjectClick = (projectId) => {
+    
+    window.location.href = `/projects/${projectId}/tasks`
+  };
+
 
     const handleNewProject = async () => {
    
@@ -32,8 +57,11 @@ function Projeto () {
         .then((response) => {
           console.log(response.data);
           console.log('deu ceerto');
+          const newProject = response.data;
+            setProjects([...projects, newProject]);
           setProjects([...projects, response.data]); // Adiciona o novo projeto à lista de projetos
-      setShowModal(false);
+        setShowModal(false);
+        saveProjectsToLocalStorage([...projects, newProject]);
           // window.location.href = '/tasks'; colocar isso só no componente que for criado, no caso o select
        
         });
@@ -68,14 +96,21 @@ function Projeto () {
 
         
       )}
-      <select>
+       <ProjectContext.Provider value={handleProjectClick}>
+       {projects.map((project, index) => (
+          <div key={index} onClick={() => handleProjectClick(project.id)}>
+            {project.name}
+          </div>
+        ))}
+      </ProjectContext.Provider>
+      {/* <select>
         <option value="">Selecione um projeto</option>
         {projects.map((project, index) => (
           <option key={index} value={project.name}>
             {project.name}
           </option>
         ))}
-      </select>
+      </select> */}
       
     </div>
     )

@@ -11,7 +11,9 @@ import Footer from "../components/footer.js"
 
 
 
+
 function Tasks() {
+  
   return (
     <div className="pageContainer">
       <img className="background_image" src={backgroundImage} alt="" />
