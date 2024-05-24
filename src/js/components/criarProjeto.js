@@ -12,6 +12,7 @@ function Projeto () {
     const [endDate, setEndDate] = useState('')
     const [projects, setProjects] = useState([]);
     
+    
     // Função para salvar os projetos no localStorage
     const saveProjectsToLocalStorage = (projects) => {
       localStorage.setItem('projects', JSON.stringify(projects));
@@ -32,6 +33,7 @@ function Projeto () {
   const handleProjectClick = (projectId) => {
     
     window.location.href = `/projects/${projectId}/tasks`
+    console.log(projectId)
   };
 
 

@@ -1,13 +1,28 @@
 import React, { useState } from "react";
 import { api } from "../../services/api";
-// import ProjectContext from "./projectContext";
-// import { useContext } from "react";
+import { useEffect } from "react";
 
 function ToDoComponents() {
   const [tasks, setTasks] = useState([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskBody, setNewTaskBody] = useState("");
-  // const selectedProjectId = useContext(ProjectContext);
+
+  const saveTasksToLocalStorage = (tasks) => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  };
+
+  // Função para carregar as tarefas do localStorage
+  const loadTasksFromLocalStorage = () => {
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  };
+
+  // Carrega as tarefas do localStorage quando o componente é montado
+  useEffect(() => {
+    loadTasksFromLocalStorage();
+  }, []);
 
   const handleNewTaskTitleChange = (event) => {
     setNewTaskTitle(event.target.value);
@@ -19,12 +34,11 @@ function ToDoComponents() {
 
   const handleAddTask =  async () => {
     if (!newTaskBody.trim()) {
-      // Se a textarea estiver vazia ou contiver apenas espaços em branco, não faça nada
       return;
     }
 
     const newTask = {
-      id: tasks.length + 5,
+      id: tasks.length + 6,
       title: newTaskTitle,
       description: newTaskBody,
       dueTime: null,
@@ -34,7 +48,7 @@ function ToDoComponents() {
 
     try {
       await api
-      .post(`/projects/1/tasks`, { //mudar isso a medida do botao clicar
+      .post(`/projects/2/tasks`, { //mudar isso a medida do botao clicar
           title: newTask.title,
           description: newTask.description,
           dueTime: newTask.dueTime,
@@ -44,14 +58,14 @@ function ToDoComponents() {
       .then((response) => {
         console.log(response.data);
         console.log('deu ceerto');
-        // setProjects([...projects, response.data]); // Adiciona o novo projeto à lista de projetos
-      // setShowModal(false);
-        // window.location.href = '/tasks'; colocar isso só no componente que for criado, no caso o select
+        const newTasks = [...tasks, newTask];
+        setTasks(newTasks);
+        saveTasksToLocalStorage(newTasks);
+    
      
       });
     } catch (error) {
         console.error('Erro ao tentar criar projeto:', error);
-        // Tratar o erro de acordo com as necessidades da sua aplicação
  
 
     };

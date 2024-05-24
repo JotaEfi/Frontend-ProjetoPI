@@ -13,6 +13,8 @@ const Navbar = () => {
 
   const handleLogout = (path) => {
     localStorage.removeItem('jwt'); 
+    localStorage.removeItem('projects')
+    localStorage.removeItem('tasks')
     setActiveTab(path);
   };
 
