@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import { api } from "../../services/api";
+import { useParams } from "react-router-dom";
 import { TaskContext } from "../../services/taskContext";
 
-function ToDoComponents({selectedProjectId}) {
+function ToDoComponents() {
   const { tasks, addTask, updateTaskStatus } = useContext(TaskContext);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskBody, setNewTaskBody] = useState("");
+  const { projectId } = useParams();
 
   const handleNewTaskTitleChange = (event) => {
     setNewTaskTitle(event.target.value);
@@ -30,7 +32,7 @@ function ToDoComponents({selectedProjectId}) {
 
     try {
       await api
-      .post(`/projects/2/tasks`, { //mudar isso a medida do botao clicar
+      .post(`/projects/${projectId}/tasks`, { //mudar isso a medida do botao clicar
           title: newTask.title,
           description: newTask.description,
           dueTime: newTask.dueTime,
