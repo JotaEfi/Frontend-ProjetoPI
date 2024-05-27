@@ -153,7 +153,7 @@
   font-weight: 100;
   font-style: normal;
   border: 4px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   position: relative;
   font-size: 15px;
   font-weight: 700;
@@ -338,7 +338,8 @@
   flex-direction: column;
   gap: 10px;
 }
-.tasks_component textarea, .tasks_component input {
+.tasks_component textarea,
+.tasks_component input {
   outline: none;
   width: 100%;
   color: rgba(0, 0, 0, 0.567);
@@ -366,8 +367,39 @@
   gap: 20px;
 }
 
+.projeto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.projeto input {
+  width: 250px;
+  height: 35px;
+  border: none;
+  background-color: rgb(246, 246, 246);
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+.projeto button {
+  height: 35px;
+  border: none;
+  background-color: #7fa9cf;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
 .white_space {
-  height: 100%;
+  height: 95%;
+  border-radius: 5px;
   top: 10px;
   background-color: white;
   position: fixed;
@@ -422,7 +454,6 @@
 
 .projeto {
   display: flex;
-  margin-top: 200px;
   justify-content: center;
   align-items: center;
   z-index: 2;
