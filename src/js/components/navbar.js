@@ -3,7 +3,7 @@ import "../../styles/styles.css";
 import "../../styles/queries.css";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import ProjectLogo from "../../assets/img/monza-logo4.png"
+import ProjectLogo from "../../assets/img/monza-logo4.png";
 // import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:621520092.
 
@@ -36,32 +36,31 @@ const Navbar = () => {
         </button>
         <ul>
           <a
-            href="home"
-            to="/"
-            id="home"
+            href="tasks"
+            to="/tasks"
+            id="tasks"
             className={activeTab === "/" ? "active" : ""}
             onClick={() => handleTabClick("/")}
           >
-            Recent
+            Tasks
           </a>
           <a
             href="home"
-            to="/"
+            to="/home"
             id="home"
-            className={activeTab === "/" ? "active" : ""}
-            onClick={() => handleTabClick("/")}
-          >
-            Workspaces
-          </a>
-          <a
-            href="loja"
-            to="/loja"
-            id="loja"
-            className={activeTab === "/loja" ? "active" : ""}
-            onClick={() => handleTabClick("/loja")}
+            className={activeTab === "/home" ? "active" : ""}
+            onClick={() => handleTabClick("/home")}
           >
             Como Funciona?
-          </a>{" "}
+          </a>
+          <div className="nav_user_profile">
+            <div className="user_profile_picture">
+              <h1>U</h1>
+            </div>
+            <div className="user_profile_name">
+              <p href="">email@usuario.com</p>
+            </div>
+          </div>
           <a
             href="/auth/login"
             to="/auth/login"
@@ -72,8 +71,6 @@ const Navbar = () => {
             Sair
           </a>
         </ul>
-
-     
       </div>
     </nav>
   );

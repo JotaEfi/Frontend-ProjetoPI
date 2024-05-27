@@ -12,13 +12,13 @@ export default function Footer() {
         <h1>Projeto de P.I 24.1</h1>
       </div>
       <div className="footer_colaborators">
-        <p>Pessoa Número 1</p>
-        <p>Pessoa Número 2</p>
-        <p>Pessoa Número 3</p>
-        <p>Pessoa Número 4</p>
-        <p>Pessoa Número 5</p>
-        <p>Pessoa Número 6</p>
-        <p>Pessoa Número 7</p>
+        <p>Pessoa_Número 1</p>
+        <p>Pessoa_Número 2</p>
+        <p>Pessoa_Número 3</p>
+        <p>Pessoa_Número 4</p>
+        <p>Pessoa_Número 5</p>
+        <p>Pessoa_Número 6</p>
+        <p>Pessoa_Número 7</p>
       </div>
       <div className="footer_logos">
         <img src={ProjectLogo} alt="" style={{ width: "150px" }} />
@@ -26,4 +26,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-};
+}
