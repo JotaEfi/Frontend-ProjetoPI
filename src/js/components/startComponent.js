@@ -1,38 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { api } from "../../services/api";
-import { useEffect } from "react";
+import { TaskContext } from "../../services/taskContext";
 
-function ToDoComponents() {
-  const [tasks, setTasks] = useState([]);
+function ToDoComponents({selectedProjectId}) {
+  const { tasks, addTask, updateTaskStatus } = useContext(TaskContext);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskBody, setNewTaskBody] = useState("");
-
-  const saveTasksToLocalStorage = (tasks) => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  };
-
-  // Função para carregar as tarefas do localStorage
-  const loadTasksFromLocalStorage = () => {
-    const savedTasks = localStorage.getItem('tasks');
-    if (savedTasks) {
-      setTasks(JSON.parse(savedTasks));
-    }
-  };
-
-  // Carrega as tarefas do localStorage quando o componente é montado
-  useEffect(() => {
-    loadTasksFromLocalStorage();
-  }, []);
 
   const handleNewTaskTitleChange = (event) => {
     setNewTaskTitle(event.target.value);
   };
 
-  const handleNewTaskBodyChange =  (event) => {
+  const handleNewTaskBodyChange = (event) => {
     setNewTaskBody(event.target.value);
   };
 
-  const handleAddTask =  async () => {
+  const handleAddTask = async () => {
     if (!newTaskBody.trim()) {
       return;
     }
@@ -42,9 +25,8 @@ function ToDoComponents() {
       title: newTaskTitle,
       description: newTaskBody,
       dueTime: null,
-      situation: 0,
+      status: "TODO",
     };
-
 
     try {
       await api
@@ -58,30 +40,31 @@ function ToDoComponents() {
       .then((response) => {
         console.log(response.data);
         console.log('deu ceerto');
-        const newTasks = [...tasks, newTask];
-        setTasks(newTasks);
-        saveTasksToLocalStorage(newTasks);
+        addTask(newTask);
+        setNewTaskTitle("");
+        setNewTaskBody("");
+        // saveTasksToLocalStorage(newTask);
     
      
       });
+      
+    
     } catch (error) {
-        console.error('Erro ao tentar criar projeto:', error);
- 
-
-    };
-    setTasks([...tasks, newTask]);
-    setNewTaskTitle("");
-    setNewTaskBody("");
+      console.error('Erro ao tentar criar projeto:', error);
+    }
   };
 
   return (
     <div className="tasksComponents">
       <h2>Iniciar</h2>
       <div className="tasks">
-        {tasks.map((task) => (
+        {tasks.filter(task => task.status === "TODO").map((task) => (
           <div key={task.id} className="task">
             <p className="taskName">{task.title}</p>
             <p className="descTask">{task.description}</p>
+            <div className="btnChange">
+              <button onClick={() => updateTaskStatus(task.id, "DOING")}>fazer</button>
+            </div>
           </div>
         ))}
       </div>

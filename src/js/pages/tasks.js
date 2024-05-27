@@ -8,6 +8,7 @@ import FinishedComponent from "../components/finishedComponent.js";
 import backgroundImage from "../../assets/img/site-background.jpg";
 // import { Textarea } from "@chakra-ui/react";
 import Footer from "../components/footer.js"
+import { TaskProvider } from "../../services/taskContext.js";
 
 
 
@@ -19,11 +20,15 @@ function Tasks() {
       <img className="background_image" src={backgroundImage} alt="" />
       <div className="white_space"></div>
       <Navbar />
+      <TaskProvider>
       <section className="toDoContainer">
+     
         <StartComponent />
         <WaitingComponent />
         <FinishedComponent />
+   
       </section>
+      </TaskProvider>
       <Footer />
     </div>
   );

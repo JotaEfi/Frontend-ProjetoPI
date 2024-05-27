@@ -39,6 +39,12 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
    
 
    .tasks {
+
+    .finished {
+          text-decoration: line-through;
+       
+    }
+    
     border-radius: $border-radius;
     display: flex;
     flex-direction: column;
@@ -63,6 +69,8 @@ box-shadow: 0px 9px 45px -14px rgba(0,0,0,0.41);
     padding: 10px;
     background-color: $color-btn;
     border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
 
     
   }

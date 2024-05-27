@@ -1,50 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { TaskContext } from "../../services/taskContext";
 
-function ToDoComponents() {
-  const [tasks, setTasks] = useState([]);
-  const [newTaskTitle, setNewTaskTitle] = useState("");
-  const [newTaskBody, setNewTaskBody] = useState("");
-
-  const handleNewTaskTitleChange = (event) => {
-    setNewTaskTitle(event.target.value);
-  };
-
-  const handleNewTaskBodyChange = (event) => {
-    setNewTaskBody(event.target.value);
-  };
-
-  const handleAddTask = () => {
-    if (!newTaskBody.trim()) {
-      // Se a textarea estiver vazia ou contiver apenas espaços em branco, não faça nada
-      return;
-    }
-
-    const newTask = {
-      id: tasks.length + 1,
-      title: newTaskTitle,
-      body: newTaskBody,
-      situation: 0,
-    };
-
-    setTasks([...tasks, newTask]);
-    setNewTaskTitle("");
-    setNewTaskBody("");
-  };
+function FinishedComponents() {
+  const { tasks } = useContext(TaskContext);
 
   return (
     <div className="tasksComponents">
-      <h2>Finalizados</h2>
+      <h2>Concluídas</h2>
       <div className="tasks">
-        {tasks.map((task) => (
-          <div key={task.id} className="task">
-            <p className="taskName">{task.title}</p>
-            <p className="descTask">{task.body}</p>
-          </div>
-        ))}
+      {tasks.filter(task => task.status === "DONE").length > 0 ? (
+  tasks.filter(task => task.status === "DONE").map((task) => (
+    <div key={task.id} className="task">
+      <p className="taskName finished">{task.title}</p>
+    </div>
+  ))
+) : (
+  <div>Não há tarefas concluídas</div>
+)}
       </div>
-
     </div>
   );
 }
 
-export default ToDoComponents;
+export default FinishedComponents;

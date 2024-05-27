@@ -258,6 +258,9 @@
   padding: 0px;
   background-color: none;
 }
+.tasksComponents .tasks .finished {
+  text-decoration: line-through;
+}
 .tasksComponents .tasks .taskName {
   font-size: 1.7rem;
 }
@@ -272,6 +275,8 @@
   padding: 10px;
   background-color: #4072A0;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .tasks_component {
