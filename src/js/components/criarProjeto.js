@@ -1,121 +1,84 @@
-import React from "react"
-import { useState } from "react"
+import React, { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import ProjectContext from "./projectContext";
-import { useEffect } from "react";
 
-function Projeto () {
-    const [showModal, setShowModal] = useState(false);
-    const [projectName, setProjectName] = useState('');
-    const [description, setDescription] = useState('');
-    const [startDate, setStartDate] = useState('')
-    const [endDate, setEndDate] = useState('')
-    const [projects, setProjects] = useState([]);
-    
-    
-    // Função para salvar os projetos no localStorage
-    const saveProjectsToLocalStorage = (projects) => {
-      localStorage.setItem('projects', JSON.stringify(projects));
-  };
+function Projeto() {
+  const [showModal, setShowModal] = useState(false);
+  const [projectName, setProjectName] = useState('');
+  const [description, setDescription] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [projects, setProjects] = useState([]);
+  const projectIds = [1, 2, 3, 4, 5, 6, 7, 8]; 
 
-  // Função para carregar os projetos do localStorage
-  const loadProjectsFromLocalStorage = () => {
-      const savedProjects = localStorage.getItem('projects');
-      if (savedProjects) {
-          setProjects(JSON.parse(savedProjects));
-      }
+  // Carregar projetos da API quando o componente é montado
+  const loadProjectsFromAPI = async () => {
+    try {
+      const projectRequests = projectIds.map(id => api.get(`/projects/${id}`));
+      const responses = await Promise.all(projectRequests);
+      const projectsData = responses.map(response => response.data);
+      setProjects(projectsData);
+    } catch (error) {
+      console.error('Erro ao carregar projetos:', error);
+      setProjects([]);
+    }
   };
 
   useEffect(() => {
-      loadProjectsFromLocalStorage();
+    loadProjectsFromAPI();
   }, []);
 
   const handleProjectClick = (projectId) => {
-    
-    window.location.href = `/projects/${projectId}/tasks`
-    console.log(projectId)
+    window.location.href = `/projects/${projectId}/tasks`;
   };
 
-
-    const handleNewProject = async () => {
-   
+  const handleNewProject = async () => {
     const projectData = {
-        name: projectName,
-        description: description,
-        startDate: startDate,
-        endDate: endDate
-      };
+      name: projectName,
+      description: description,
+      startDate: startDate,
+      endDate: endDate
+    };
 
-      try {
-        await api
-        .post('/projects', {
-            name: projectData.name,
-            description: projectData.description,
-            startDate: projectData.startDate,
-            endDate: projectData.endDate
-        },
-      )
-      
-        .then((response) => {
-          console.log(response.data);
-          console.log('deu ceerto');
-          const newProject = response.data;
-            setProjects([...projects, newProject]);
-          setProjects([...projects, response.data]); // Adiciona o novo projeto à lista de projetos
-        setShowModal(false);
-        saveProjectsToLocalStorage([...projects, newProject]);
-          // window.location.href = '/tasks'; colocar isso só no componente que for criado, no caso o select
-       
-        });
-      } catch (error) {
-          console.error('Erro ao tentar criar projeto:', error);
-          // Tratar o erro de acordo com as necessidades da sua aplicação
-   
+    try {
+      const response = await api.post('/projects', projectData);
+      const newProject = response.data;
+      setProjects(prevProjects => [...prevProjects, newProject]);
+      setShowModal(false);
+    } catch (error) {
+      console.error('Erro ao tentar criar projeto:', error);
+    }
+  };
 
-      };
-  }
+  return (
+    <div className="projeto">
+      <button className="btnProject" onClick={() => setShowModal(true)}>
+        <span className="btnAddProject">
+          +
+        </span>
+        Novo projeto
+      </button>
 
-    return (
-        <div className="projeto">
-        <button className="btnProject" onClick={() => setShowModal(true)}>
-            <span className="btnAddProject">
-                +
-            </span>
-
-            Novo projeto
-
-        </button>
-
-        {showModal && (
+      {showModal && (
         <div className="modal">
           <input type="text" value={projectName} onChange={(e) => setProjectName(e.target.value)} placeholder="Nome do projeto" />
           <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Descrição" />
-          <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Data de final" />
+          <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} placeholder="Data de início" />
           <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} placeholder="Data de final" />
-
           <button onClick={handleNewProject}>Criar Projeto</button>
         </div>
-
-        
       )}
-       <ProjectContext.Provider value={handleProjectClick}>
-       {projects.map((project, index) => (
-          <div key={index} onClick={() => handleProjectClick(project.id)}>
+
+      {Array.isArray(projects) && projects.length > 0 ? (
+        projects.map((project) => (
+          <div key={project.id} onClick={() => handleProjectClick(project.id)}>
             {project.name}
           </div>
-        ))}
-      </ProjectContext.Provider>
-      {/* <select>
-        <option value="">Selecione um projeto</option>
-        {projects.map((project, index) => (
-          <option key={index} value={project.name}>
-            {project.name}
-          </option>
-        ))}
-      </select> */}
-      
+        ))
+      ) : (
+        <p>Nenhum projeto encontrado.</p>
+      )}
     </div>
-    )
+  );
 }
 
-export default Projeto
+export default Projeto;
