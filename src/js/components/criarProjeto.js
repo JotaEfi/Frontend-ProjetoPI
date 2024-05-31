@@ -8,7 +8,7 @@ function Projeto() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [projects, setProjects] = useState([]);
-  const projectIds = [1, 2, 3, 4, 5, 6, 7, 8];
+  const projectIds = [3, 4, 5, 6, 7];
 
   // Carregar projetos da API quando o componente é montado
   const loadProjectsFromAPI = async () => {
@@ -25,8 +25,18 @@ function Projeto() {
     }
   };
 
+  const loadUsers = async () => {
+    try {
+      const response = await api.get(`/projects/1/users`);
+      console.log(response)
+    } catch (error) {
+      console.error("Erro ao carregar usuários:", error);
+    }
+  };
+
   useEffect(() => {
     loadProjectsFromAPI();
+    loadUsers();
   }, []);
 
   const handleProjectClick = (projectId) => {
@@ -46,8 +56,21 @@ function Projeto() {
       const newProject = response.data;
       setProjects((prevProjects) => [...prevProjects, newProject]);
       setShowModal(false);
+      // Associar o usuário ao novo projeto
+      await createUserForProject(newProject.id);
     } catch (error) {
       console.error("Erro ao tentar criar projeto:", error);
+    }
+  };
+
+  const createUserForProject = async () => {
+    try {
+      await api.post(`/projects/1/users`, {
+        userId: 1,
+        authority: "USER",
+      });
+    } catch (error) {
+      console.error("Erro ao associar usuário ao projeto:", error);
     }
   };
 

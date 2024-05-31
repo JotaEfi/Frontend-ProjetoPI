@@ -10,13 +10,15 @@ export const TaskProvider = ({ children }) => {
   };
 
   const updateTaskStatus = (taskId, newStatus) => {
-    setTasks(tasks.map(task => 
+    setTasks(currentTasks => currentTasks.map(task => 
       task.id === taskId ? { ...task, status: newStatus } : task
     ));
   };
+  
+  
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, updateTaskStatus }}>
+    <TaskContext.Provider value={{ tasks, setTasks, addTask, updateTaskStatus }}>
       {children}
     </TaskContext.Provider>
   );
