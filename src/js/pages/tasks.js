@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "../components/navbar.js";
 import WaitingComponent from "../components/waitingComponent.js";
 import ToDoComponents from "../components/startComponent.js";
-import FinishedComponent from "../components/finishedComponent.js";
+// import FinishedComponent from "../components/finishedComponent.js";
 import backgroundImage from "../../assets/img/site-background.jpg";
 // import { Textarea } from "@chakra-ui/react";
 // import Footer from "../components/footer.js"
@@ -25,7 +25,7 @@ function Tasks() {
      
         <ToDoComponents />
         <WaitingComponent />
-        <FinishedComponent />
+        {/* <FinishedComponent /> */}
    
       </section>
       </TaskProvider>

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { api } from "../../services/api";
 
@@ -9,7 +8,32 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("");
-  // const { signIn, signed } = useContext(AuthContext)
+
+  // State to store fetched user ID
+  // const [userId, setUserId] = useState(null); // Initialize as null
+
+  // Function to load all users and find the user ID by email
+  const loadUsers = async (email) => {
+    try {
+      const response = await api.get(`/users`);
+      const users = response.data.content; // Access the 'content' key
+      
+      // Check if users is an array
+      if (Array.isArray(users)) {
+        const user = users.find((user) => user.email === email);
+        if (user) {
+          return user.id;
+        }
+      } else {
+        console.error("Resposta da API não é um array:", users);
+      }
+      
+      return null;
+    } catch (error) {
+      console.error("Erro ao carregar usuários:", error);
+      return null;
+    }
+  };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -23,6 +47,15 @@ function Login() {
         console.log(response);
         localStorage.setItem("jwt", response.headers["authorization"]);
         console.log(response.headers["authorization"]);
+
+        // Load user ID based on the email
+        const userId = await loadUsers(email);
+        if (userId) {
+          localStorage.setItem("userId", userId);
+        } else {
+          console.error("Erro: ID do usuário não encontrado após o login.");
+        }
+
         window.location.href = "/home";
       } else {
         throw new Error("Email ou senha incorretos");
@@ -37,10 +70,10 @@ function Login() {
     setUsername(event.target.value);
   };
 
-  // mudança no campo de senha
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
   useEffect(() => {
     setActiveTab(location.pathname);
   }, [location.pathname]);
@@ -68,7 +101,6 @@ function Login() {
               autoComplete="off"
             />
           </div>
-
           <label htmlFor="password">Senha:</label>
           <div>
             <input
@@ -85,21 +117,13 @@ function Login() {
           {errorMessage && <p>{errorMessage}</p>}
           <div className="recall-forget">
             <label className="checkLabel">
-              <input type="checkbox" />
-              Lembrar de mim
+              <input type="checkbox" /> Lembrar de mim
             </label>
           </div>
-
           <button type="submit">Entrar</button>
-
           <p>
             Já tem uma conta?
-            <a
-              href="/"
-              to="/"
-              className={activeTab === "/" ? "active" : ""}
-              onClick={() => handleTabClick("/")}
-            >
+            <a href="/" to="/" className={activeTab === "/" ? "active" : ""} onClick={() => handleTabClick("/")}>
               Faça o cadastro
             </a>
           </p>

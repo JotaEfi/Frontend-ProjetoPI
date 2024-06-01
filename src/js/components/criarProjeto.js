@@ -8,36 +8,55 @@ function Projeto() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [projects, setProjects] = useState([]);
-  const projectIds = [3, 4, 5, 6, 7];
+  const userId = localStorage.getItem("userId");
+  // const projectIds = [3, 4, 5, 6, 7, 8];
 
-  // Carregar projetos da API quando o componente é montado
-  const loadProjectsFromAPI = async () => {
+  // Carregar projetos associados ao usuário logado
+  const loadUserProjects = async () => {
     try {
-      const projectRequests = projectIds.map((id) =>
-        api.get(`/projects/${id}`)
-      );
-      const responses = await Promise.all(projectRequests);
-      const projectsData = responses.map((response) => response.data);
-      setProjects(projectsData);
+      const response = await api.get(`/users/${userId}/projects`);
+      const userProjects = response.data.content;
+      setProjects(userProjects);
+      console.log(userProjects);
     } catch (error) {
-      console.error("Erro ao carregar projetos:", error);
-      setProjects([]);
-    }
-  };
-
-  const loadUsers = async () => {
-    try {
-      const response = await api.get(`/projects/1/users`);
-      console.log(response)
-    } catch (error) {
-      console.error("Erro ao carregar usuários:", error);
+      console.error("Erro ao carregar projetos do usuário:", error);
     }
   };
 
   useEffect(() => {
-    loadProjectsFromAPI();
-    loadUsers();
+    loadUserProjects();
+  
   }, []);
+
+  // const associateUserWithProject = async (projectId) => {
+  //   try {
+  //     const response = await api.get(`/projects/1/users`);
+  //     console.log("Usuário associado ao projeto:", response.data);
+  //   } catch (error) {
+  //     console.error("Erro ao associar usuário ao projeto:", error);
+  //   }
+  // };
+
+
+
+  // Carregar projetos da API (específico para os IDs fornecidos)
+  // const loadProjectsFromAPI = async () => {
+   
+  //   try {
+  //     const projectRequests = projectIds.map((id) => api.get(`/projects/${id}`));
+  //     const responses = await Promise.all(projectRequests);
+  //     const projectsData = responses.map((response) => response.data);
+  //     setProjects(projectsData);
+  //   } catch (error) {
+  //     console.error("Erro ao carregar projetos:", error);
+  //     setProjects([]);
+  //   }
+  // };
+
+  // Se precisar carregar projetos por IDs fornecidos, use este useEffect
+  // useEffect(() => {
+  //   loadProjectsFromAPI();
+  // }, []);
 
   const handleProjectClick = (projectId) => {
     window.location.href = `/projects/${projectId}/tasks`;
@@ -49,28 +68,16 @@ function Projeto() {
       description: description,
       startDate: startDate,
       endDate: endDate,
+      userId: localStorage.getItem("userId"), // Adiciona o ID do usuário logado
     };
-
+  
     try {
       const response = await api.post("/projects", projectData);
       const newProject = response.data;
       setProjects((prevProjects) => [...prevProjects, newProject]);
       setShowModal(false);
-      // Associar o usuário ao novo projeto
-      await createUserForProject(newProject.id);
     } catch (error) {
       console.error("Erro ao tentar criar projeto:", error);
-    }
-  };
-
-  const createUserForProject = async () => {
-    try {
-      await api.post(`/projects/1/users`, {
-        userId: 1,
-        authority: "USER",
-      });
-    } catch (error) {
-      console.error("Erro ao associar usuário ao projeto:", error);
     }
   };
 
