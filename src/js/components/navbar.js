@@ -4,13 +4,30 @@ import "../../styles/queries.css";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import ProjectLogo from "../../assets/img/monza-logo4.png";
+import { api } from "../../services/api";
 // import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:621520092.
 
 const Navbar = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("");
+  const userId = localStorage.getItem("userId");
+  const [email, setEmail] = useState("")
 
+
+  const getEmail = async () => {
+    try {
+      const response = await api.get(`/users/${userId}`);
+      setEmail(response.data.email); // Assuming email is a property within response.data
+    } catch (error) {
+      console.error('Error fetching email:', error);
+      // Handle errors gracefully, e.g., display an error message to the user
+    }
+  };
+  
+  useEffect(() => {
+    getEmail(); // Call getEmail on component mount or when userId changes
+  }, [userId]); 
   const handleLogout = (path) => {
     localStorage.removeItem('jwt'); 
     localStorage.removeItem('projects')
@@ -67,7 +84,7 @@ const Navbar = () => {
               <h1>U</h1>
             </div>
             <div className="user_profile_name">
-              <p href="">email@usuario.com</p>
+            <p>{email}</p>
             </div>
           </div>
           <a
