@@ -35,23 +35,32 @@ const Navbar = () => {
           </a>
         </button>
         <ul>
-          <a
-            href="tasks"
-            to="/tasks"
-            id="tasks"
-            className={activeTab === "/" ? "active" : ""}
-            onClick={() => handleTabClick("/")}
-          >
-            Tasks
-          </a>
-          <a
+        <a
             href="home"
             to="/home"
-            id="home"
-            className={activeTab === "/home" ? "active" : ""}
+      
+            className={activeTab === "/" ? "active" : ""}
             onClick={() => handleTabClick("/home")}
           >
-            Como Funciona?
+            Home
+          </a>
+          <a
+            href="projects"
+            to="/projects"
+      
+            className={activeTab === "/" ? "active" : ""}
+            onClick={() => handleTabClick("/projects")}
+          >
+            Projetos
+          </a>
+          <a
+            href="about"
+            to="/about"
+   
+            className={activeTab === "/about" ? "active" : ""}
+            onClick={() => handleTabClick("/about")}
+          >
+            Sobre
           </a>
           <div className="nav_user_profile">
             <div className="user_profile_picture">

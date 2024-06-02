@@ -4,7 +4,9 @@ import Home from "../js/pages/home";
 import Tasks from "../js/pages/tasks";
 import About from "../js/pages/about";
 
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Projetos from "../js/pages/projetos";
 
 export const AppRouter = () => {
   const isAuthenticated = localStorage.getItem("jwt");
@@ -16,6 +18,7 @@ export const AppRouter = () => {
         <Route path="/" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/tasks" element={<Tasks />} />
+        <Route path="/projects" element={<Projetos />} />
 
         <Route
           path="/projects/:projectId/tasks"

@@ -28,38 +28,28 @@ function Projeto() {
   
   }, []);
 
-  // const associateUserWithProject = async (projectId) => {
-  //   try {
-  //     const response = await api.get(`/projects/1/users`);
-  //     console.log("Usuário associado ao projeto:", response.data);
-  //   } catch (error) {
-  //     console.error("Erro ao associar usuário ao projeto:", error);
-  //   }
-  // };
-
-
-
-  // Carregar projetos da API (específico para os IDs fornecidos)
-  // const loadProjectsFromAPI = async () => {
-   
-  //   try {
-  //     const projectRequests = projectIds.map((id) => api.get(`/projects/${id}`));
-  //     const responses = await Promise.all(projectRequests);
-  //     const projectsData = responses.map((response) => response.data);
-  //     setProjects(projectsData);
-  //   } catch (error) {
-  //     console.error("Erro ao carregar projetos:", error);
-  //     setProjects([]);
-  //   }
-  // };
-
-  // Se precisar carregar projetos por IDs fornecidos, use este useEffect
-  // useEffect(() => {
-  //   loadProjectsFromAPI();
-  // }, []);
 
   const handleProjectClick = (projectId) => {
     window.location.href = `/projects/${projectId}/tasks`;
+  };
+
+  const createClassification = async (projectId) => {
+    const classifications = [
+      {
+        title:"Nothing",
+        projectId: projectId,
+      }
+    ];
+
+    try {
+      const classificationPromises = classifications.map(classification =>
+        api.post(`/projects/${projectId}/classifications`, classification)
+      );
+      await Promise.all(classificationPromises);
+      console.log("Classificações criadas com sucesso!", classificationPromises);
+    } catch (error) {
+      console.error("Erro ao criar classificações:", error);
+    }
   };
 
   const handleNewProject = async () => {
@@ -68,18 +58,22 @@ function Projeto() {
       description: description,
       startDate: startDate,
       endDate: endDate,
-      userId: localStorage.getItem("userId"), // Adiciona o ID do usuário logado
+      userId: localStorage.getItem("userId"),
     };
-  
+
     try {
       const response = await api.post("/projects", projectData);
       const newProject = response.data;
       setProjects((prevProjects) => [...prevProjects, newProject]);
       setShowModal(false);
+
+      // Create classifications for the new project
+      await createClassification(newProject.id);
     } catch (error) {
       console.error("Erro ao tentar criar projeto:", error);
     }
   };
+
 
   return (
     <div className="projeto">
