@@ -8,19 +8,27 @@ function DoingComponents() {
     <div className="tasksComponents">
       <h2>Fazendo</h2>
       <div className="tasks">
-      {tasks.filter(task => task.status === "DOING").length > 0 ? (
-  tasks.filter(task => task.status === "DOING").map((task) => (
-    <div key={task.id} className="task">
-      <p className="taskName">{task.title}</p>
-      <p className="descTask">{task.description}</p>
-      <div className="btnChange">
-        <button onClick={() => updateTaskStatus(task.id, "DONE")}>concluir</button>
-      </div>
-    </div>
-  ))
-) : (
-  <div>Não há tarefas em andamento.</div>
-)}
+        {tasks.filter((task) => task.status === "DOING").length > 0 ? (
+          tasks
+            .filter((task) => task.status === "DOING")
+            .map((task) => (
+              <div key={task.id} className="task">
+                <div className="task-information">
+                  {" "}
+                  <p className="taskName">{task.title}</p>
+                  <p className="descTask">{task.description}</p>
+                </div>
+
+                <div className="btnChange">
+                  <button onClick={() => updateTaskStatus(task.id, "DONE")}>
+                    concluir
+                  </button>
+                </div>
+              </div>
+            ))
+        ) : (
+          <div>Não há tarefas em andamento.</div>
+        )}
       </div>
     </div>
   );

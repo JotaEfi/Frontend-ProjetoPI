@@ -32,27 +32,23 @@ function ToDoComponents() {
 
     try {
       await api
-      .post(`/projects/${projectId}/tasks`, { //mudar isso a medida do botao clicar
+        .post(`/projects/${projectId}/tasks`, {
+          //mudar isso a medida do botao clicar
           title: newTask.title,
           description: newTask.description,
           dueTime: newTask.dueTime,
-      },
-    )
-    
-      .then((response) => {
-        console.log(response.data);
-        console.log('deu ceerto');
-        addTask(newTask);
-        setNewTaskTitle("");
-        setNewTaskBody("");
-        // saveTasksToLocalStorage(newTask);
-    
-     
-      });
-      
-    
+        })
+
+        .then((response) => {
+          console.log(response.data);
+          console.log("deu ceerto");
+          addTask(newTask);
+          setNewTaskTitle("");
+          setNewTaskBody("");
+          // saveTasksToLocalStorage(newTask);
+        });
     } catch (error) {
-      console.error('Erro ao tentar criar projeto:', error);
+      console.error("Erro ao tentar criar projeto:", error);
     }
   };
 
@@ -60,15 +56,21 @@ function ToDoComponents() {
     <div className="tasksComponents">
       <h2>Iniciar</h2>
       <div className="tasks">
-        {tasks.filter(task => task.status === "TODO").map((task) => (
-          <div key={task.id} className="task">
-            <p className="taskName">{task.title}</p>
-            <p className="descTask">{task.description}</p>
-            <div className="btnChange">
-              <button onClick={() => updateTaskStatus(task.id, "DOING")}>fazer</button>
+        {tasks
+          .filter((task) => task.status === "TODO")
+          .map((task) => (
+            <div key={task.id} className="task">
+              <div className="task-information">
+                <p className="taskName">{task.title}</p>
+                <p className="descTask">{task.description}</p>
+              </div>
+              <div className="btnChange">
+                <button onClick={() => updateTaskStatus(task.id, "DOING")}>
+                  fazer
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
 
       <div className="tasks_component">
