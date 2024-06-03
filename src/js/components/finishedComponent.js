@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { TaskContext } from "../../services/taskContext";
+import { color } from "@chakra-ui/react";
 
 function FinishedComponents() {
   const { tasks } = useContext(TaskContext);

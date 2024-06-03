@@ -10,11 +10,7 @@ import backgroundImage from "../../assets/img/site-background.jpg";
 // import Footer from "../components/footer.js"
 import { TaskProvider } from "../../services/taskContext.js";
 
-
-
-
 function Tasks() {
-  
   return (
     <div className="pageContainer">
       <img className="background_image" src={backgroundImage} alt="" />

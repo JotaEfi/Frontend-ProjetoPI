@@ -41,7 +41,7 @@
   gap: 5px;
 }
 .containerLogin .Login a {
-  color: #435D75;
+  color: #435d75;
   text-decoration: underline;
 }
 .containerLogin .Login form {
@@ -85,13 +85,13 @@
   margin-top: 5px;
   border-radius: 5px;
   border: none;
-  background-color: #4072A0;
+  background-color: #4072a0;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
 .containerLogin .Login form button:hover {
-  background-color: #435D75;
+  background-color: #435d75;
   transition-duration: 0.2s;
 }
 .containerLogin .Login form .checkLabel {
@@ -107,7 +107,7 @@
   top: 10px;
   position: fixed;
   align-items: center;
-  z-index: 2;
+  z-index: 6;
 }
 
 .nav-bar .nav_container {
@@ -290,7 +290,7 @@
   font-size: 1.5rem;
   color: white;
   padding: 10px;
-  background-color: #435D75;
+  background-color: #435d75;
   border: none;
   width: 100%;
   cursor: pointer;
@@ -326,8 +326,34 @@
 }
 .tasksComponents .task {
   padding: 10px;
-  background-color: #4072A0;
+  background-color: #4072a0;
   border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.tasksComponents .task .finished {
+  color: rgb(13, 33, 68);
+}
+.tasksComponents .task .btnChange {
+  background-color: none;
+}
+.tasksComponents .task .btnChange button {
+  border: none;
+  background-color: #7fa9cf;
+  border-radius: 5px 20px 20px 5px;
+  padding: 3px 4px;
+  height: 100%;
+  color: white;
+  border: 2px solid transparent;
+  font-size: 10px;
+}
+.tasksComponents .task .btnChange button:hover {
+  border: 2px solid rgb(36, 55, 87);
+  transition-duration: 0.2s;
+  background-color: #435d75;
+}
+.tasksComponents .task .task-information {
   display: flex;
   flex-direction: column;
 }
@@ -372,6 +398,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  z-index: 0;
 }
 
 .projeto input {
@@ -397,11 +424,26 @@
   flex-direction: column;
 }
 
+.created-project-name {
+  font-size: 30px;
+  background-color: #7fa9cf;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.created-project-name:hover {
+  background-color: #465f75;
+  transition-duration: 0.3s;
+  color: rgb(197, 197, 197);
+}
+
 .white_space {
   height: 95%;
   border-radius: 5px;
   top: 10px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   position: fixed;
   width: 1080px;
   left: 50%;
@@ -461,7 +503,7 @@
 .projeto .btnProject {
   height: 150px;
   width: 150px;
-  background-color: #4072A0;
+  background-color: #4072a0;
   color: white;
   display: flex;
   flex-direction: column;

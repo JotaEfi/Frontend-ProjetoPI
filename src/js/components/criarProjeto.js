@@ -112,7 +112,7 @@ function Projeto() {
       </button>
       {Array.isArray(projects) && projects.length > 0 ? (
         projects.map((project) => (
-          <div key={project.id} onClick={() => handleProjectClick(project.id)}>
+          <div key={project.id} onClick={() => handleProjectClick(project.id)} className="created-project-name">
             {project.name}
           </div>
         ))
