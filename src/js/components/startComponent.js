@@ -112,7 +112,7 @@ function ToDoComponents() {
             <p className="taskName">{task.title}</p>
             <p className="descTask">{task.description}</p>
             <div className="btnChange">
-              <button onClick={() => handleMoveToDoing(task.id)}>fazer</button>
+              <button className="btnFazer" onClick={() => handleMoveToDoing(task.id)}>fazer</button>
             </div>
           </div>
         ))}

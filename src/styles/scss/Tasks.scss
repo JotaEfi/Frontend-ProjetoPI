@@ -2,6 +2,8 @@
 
 .tasksComponents {
   border-radius: $border-radius;
+  gap: 40px;
+
   position: relative;
   height: fit-content;
   min-height: 110px;
@@ -24,6 +26,16 @@
     font-size: 2rem;
     font-weight: 700;
   }
+
+    .btnFazer {
+      width: 100%;
+      background-color: $blue3;
+      border-radius: 5px;
+      border: none;
+      height: 30px;
+      margin-top: 10px;
+      color: white;
+    }
 
   .btnTask {
     border-radius: $border-radius;
@@ -68,33 +80,7 @@
     background-color: $color-btn;
     border-radius: $border-radius;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    .finished {
-      color: rgb(13, 33, 68);
-    }
-    .btnChange {
-      background-color: none;
-      button {
-        border: none;
-        background-color: $blue3;
-        border-radius: $border-radius 20px 20px $border-radius;
-        padding: 3px 4px;
-        height: 100%;
-        color: white;
-        border: 2px solid transparent;
-        font-size: 10px;
-      }
-      button:hover {
-        border: 2px solid rgb(36, 55, 87);
-        transition-duration: 0.2s;
-        background-color: $blue4;
-      }
-    }
-    .task-information {
-      display: flex;
-      flex-direction: column;
-    }
+    flex-direction: column;
   }
 }
 
@@ -119,7 +105,7 @@
     color: rgba(0, 0, 0, 0.567);
   }
   textarea {
-    max-width: 285px;
+    
     min-width: 285px;
     min-height: 80px;
     max-height: 80px;
@@ -128,10 +114,10 @@
 
 .toDoContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 2fr);
   justify-content: space-around;
   width: 100%;
-  max-width: 1080px;
+  max-width: 800px;
   gap: 20px;
 }
 .projeto {
@@ -139,7 +125,6 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  z-index: 0;
 }
 .projeto {
   input {
@@ -164,17 +149,27 @@
   gap: 10px;
   flex-direction: column;
 }
-.created-project-name {
-  font-size: 30px;
-  background-color: $blue3;
-  padding: 10px;
-  border-radius: $border-radius;
-  color: white;
-  cursor: pointer;
+
+.projectComponent {
+  width: 400px;
+
+  padding: 20px;
+
 }
 
-.created-project-name:hover {
-  background-color: $blue3-darken;
-  transition-duration: 0.3s;
-  color: rgb(197, 197, 197);
+.projectName {
+  font-size: 1.8rem;
+  padding: 5px 0px ;
 }
+
+ .descStartDate, .descEndDate  {
+  font-size: 1.5rem;
+}
+
+.descProject {
+  color: rgba(255, 255, 255, 0.644);
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+}
+
+

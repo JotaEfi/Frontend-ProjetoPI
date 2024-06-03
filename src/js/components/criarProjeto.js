@@ -77,6 +77,13 @@ function Projeto() {
 
   return (
     <div className="projeto">
+      
+      
+      <button className="btnProject" onClick={() => setShowModal(true)}>
+        <span className="btnAddProject">+</span>
+        Novo projeto
+      </button>
+
       {showModal && (
         <div className="modal">
           <input
@@ -105,12 +112,8 @@ function Projeto() {
           />
           <button onClick={handleNewProject}>Criar Projeto</button>
         </div>
-      )}
-      <button className="btnProject" onClick={() => setShowModal(true)}>
-        <span className="btnAddProject">+</span>
-        Novo projeto
-      </button>
-      {Array.isArray(projects) && projects.length > 0 ? (
+      )}<div className="spaceProject">
+          {Array.isArray(projects) && projects.length > 0 ? (
         projects.map((project) => (
           <div key={project.id} onClick={() => handleProjectClick(project.id)} className="created-project-name">
             {project.name}
@@ -119,6 +122,8 @@ function Projeto() {
       ) : (
         <p>Nenhum projeto encontrado.</p>
       )}
+      </div>
+      
     </div>
   );
 }

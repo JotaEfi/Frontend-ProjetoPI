@@ -9,9 +9,13 @@ function Projetos() {
   return (
     <>
       <Navbar />
+      <div className="mainProjects">
+
       <StartProject />
       <StartedProject />
       <DoneProject />
+      </div>
+     
     </>
   );
 }

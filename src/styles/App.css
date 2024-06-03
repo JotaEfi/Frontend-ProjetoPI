@@ -246,6 +246,30 @@
   margin: 0 auto;
 }
 
+.mainProjects {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 150px;
+  padding: 20px;
+  gap: 60px;
+}
+
+.spaceProject {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.created-project-name {
+  font-size: 20px;
+  background-color: #7fa9cf;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
 .background_image {
   width: 100%;
   /* Define a largura da imagem igual à largura da tela */
@@ -267,6 +291,7 @@
 
 .tasksComponents {
   border-radius: 5px;
+  gap: 40px;
   position: relative;
   height: fit-content;
   min-height: 110px;
@@ -284,6 +309,15 @@
 .tasksComponents h2 {
   font-size: 2rem;
   font-weight: 700;
+}
+.tasksComponents .btnFazer {
+  width: 100%;
+  background-color: #7fa9cf;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+  color: white;
 }
 .tasksComponents .btnTask {
   border-radius: 5px;
@@ -329,32 +363,6 @@
   background-color: #4072a0;
   border-radius: 5px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.tasksComponents .task .finished {
-  color: rgb(13, 33, 68);
-}
-.tasksComponents .task .btnChange {
-  background-color: none;
-}
-.tasksComponents .task .btnChange button {
-  border: none;
-  background-color: #7fa9cf;
-  border-radius: 5px 20px 20px 5px;
-  padding: 3px 4px;
-  height: 100%;
-  color: white;
-  border: 2px solid transparent;
-  font-size: 10px;
-}
-.tasksComponents .task .btnChange button:hover {
-  border: 2px solid rgb(36, 55, 87);
-  transition-duration: 0.2s;
-  background-color: #435d75;
-}
-.tasksComponents .task .task-information {
-  display: flex;
   flex-direction: column;
 }
 
@@ -378,7 +386,6 @@
   color: rgba(0, 0, 0, 0.567);
 }
 .tasks_component textarea {
-  max-width: 285px;
   min-width: 285px;
   min-height: 80px;
   max-height: 80px;
@@ -386,10 +393,10 @@
 
 .toDoContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 2fr);
   justify-content: space-around;
   width: 100%;
-  max-width: 1080px;
+  max-width: 800px;
   gap: 20px;
 }
 
@@ -398,7 +405,6 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  z-index: 0;
 }
 
 .projeto input {
@@ -424,19 +430,24 @@
   flex-direction: column;
 }
 
-.created-project-name {
-  font-size: 30px;
-  background-color: #7fa9cf;
-  padding: 10px;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
+.projectComponent {
+  width: 400px;
+  padding: 20px;
 }
 
-.created-project-name:hover {
-  background-color: #465f75;
-  transition-duration: 0.3s;
-  color: rgb(197, 197, 197);
+.projectName {
+  font-size: 1.8rem;
+  padding: 5px 0px;
+}
+
+.descStartDate, .descEndDate {
+  font-size: 1.5rem;
+}
+
+.descProject {
+  color: rgba(255, 255, 255, 0.644);
+  font-size: 1.5rem;
+  padding-bottom: 5px;
 }
 
 .white_space {
@@ -456,7 +467,7 @@
 
 .pageContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   max-width: 1080px;
   width: 100%;
   height: 100%;
@@ -501,15 +512,15 @@
   z-index: 2;
 }
 .projeto .btnProject {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 160px;
   background-color: #4072a0;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;

@@ -5,7 +5,7 @@ import Navbar from "../components/navbar.js";
 import WaitingComponent from "../components/waitingComponent.js";
 import ToDoComponents from "../components/startComponent.js";
 // import FinishedComponent from "../components/finishedComponent.js";
-import backgroundImage from "../../assets/img/site-background.jpg";
+// import backgroundImage from "../../assets/img/site-background.jpg";
 // import { Textarea } from "@chakra-ui/react";
 // import Footer from "../components/footer.js"
 import { TaskProvider } from "../../services/taskContext.js";
@@ -13,7 +13,7 @@ import { TaskProvider } from "../../services/taskContext.js";
 function Tasks() {
   return (
     <div className="pageContainer">
-      <img className="background_image" src={backgroundImage} alt="" />
+      {/* <img className="background_image" src={backgroundImage} alt="" /> */}
       <div className="white_space"></div>
       <Navbar />
       <TaskProvider>

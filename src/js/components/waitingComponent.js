@@ -32,7 +32,7 @@ function DoingComponents() {
               <p className="taskName">{task.title}</p>
               <p className="descTask">{task.description}</p>
               <div className="btnChange">
-                <button onClick={() => handleCompleteTask(task.id)}>concluir</button>
+                <button className="btnFazer" onClick={() => handleCompleteTask(task.id)}>concluir</button>
               </div>
             </div>
           ))

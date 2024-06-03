@@ -75,8 +75,8 @@ function StartProject() {
 
   return (
     <>
-      <Navbar />
-      <div className="pageContainer">
+  
+      
         <div className="tasksComponents projectComponent">
           <h2>Iniciar</h2>
           {Array.isArray(projects) && projects.length > 0 ? (
@@ -96,14 +96,14 @@ function StartProject() {
                   Data Final:
                   {project.endDate}
                 </div>
-                <button onClick={() => handleStartProject(project)}>Começar</button>
+                <button className="btnFazer" onClick={() => handleStartProject(project)}>Começar</button>
               </div>
             ))
           ) : (
             <p>Nenhum projeto encontrado.</p>
           )}
         </div>
-      </div>
+     
     </>
   );
 }

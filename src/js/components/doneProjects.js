@@ -50,8 +50,8 @@ function DoneProject() {
 
   return (
     <>
-      <Navbar />
-      <div className="pageContainer">
+    
+    
         <div className="tasksComponents projectComponent">
           <h2>Concluído</h2>
           {Array.isArray(projects) && projects.length > 0 ? (
@@ -67,7 +67,7 @@ function DoneProject() {
             <p>Nenhum projeto encontrado.</p>
           )}
         </div>
-      </div>
+ 
     </>
   );
 }

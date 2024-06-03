@@ -32,6 +32,7 @@ const Navbar = () => {
     localStorage.removeItem('jwt'); 
     localStorage.removeItem('projects')
     localStorage.removeItem('tasks')
+    localStorage.removeItem('userId')
     setActiveTab(path);
   };
 
