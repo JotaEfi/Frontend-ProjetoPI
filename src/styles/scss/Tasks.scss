@@ -164,3 +164,17 @@
   gap: 10px;
   flex-direction: column;
 }
+.created-project-name {
+  font-size: 30px;
+  background-color: $blue3;
+  padding: 10px;
+  border-radius: $border-radius;
+  color: white;
+  cursor: pointer;
+}
+
+.created-project-name:hover {
+  background-color: $blue3-darken;
+  transition-duration: 0.3s;
+  color: rgb(197, 197, 197);
+}
