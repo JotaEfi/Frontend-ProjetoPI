@@ -80,7 +80,7 @@ function Projeto() {
             </div>
           ))
         ) : (
-          <p>Nenhum projeto encontrado.</p>
+          <p className="foundProject">Nenhum projeto encontrado.</p>
         )}
       </div>
       <button className="btnProject" onClick={() => setShowModal(true)}>

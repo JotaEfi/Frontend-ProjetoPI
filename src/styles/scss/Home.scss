@@ -20,16 +20,13 @@
 
 }
 
-.spaceProject {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
 
 
 
 .created-project-name {
+    cursor: pointer;
     font-size: 20px;
+    margin: 10px;
     background-color: $blue3;
     padding: 20px;
     border-radius: 8px ;
@@ -55,4 +52,8 @@ object-fit: cover;
     display: flex;
     flex-direction: column;
     gap: 30px;
+}
+
+.projectContainer {
+    cursor: pointer;
 }

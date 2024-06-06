@@ -17,6 +17,8 @@
     background-color: $background-color;
   }
 
+  
+
   @include customs(1rem, white, 15px, $blue3);
   display: flex;
   flex-direction: column;
@@ -63,17 +65,7 @@
     gap: 5px;
 
     @include customs(1.5rem, white, 0px, none);
-    .taskName {
-      font-size: 1.7rem;
-    }
-
-    .descTask {
-      padding: 0px;
-      font-size: 1.3rem;
-      max-width: 260px;
-      word-wrap: break-word;
-      color: rgba(255, 255, 255, 0.671);
-    }
+   
   }
   .task {
     padding: 10px;
@@ -165,11 +157,87 @@
  .descStartDate, .descEndDate  {
   font-size: 1.5rem;
 }
+.btnTarefa{
+  margin: auto;
+}
 
+.tasks-mts{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // min-width: 100px;
+  padding: 10px;
+  margin: 10px;
+  width: 22%;
+  font-size: 1.5rem;
+
+  .taskName {
+    font-size: 2rem;
+    padding: 5px;
+  }
+
+  .descTask {
+    padding: 0px;
+    // font-size: 1.3rem;
+    max-width: 260px;
+    word-wrap: break-word;
+    color: rgba(255, 255, 255, 0.671);
+  }
+ 
+}
 .descProject {
   color: rgba(255, 255, 255, 0.644);
   font-size: 1.5rem;
   padding-bottom: 5px;
 }
 
+.taskObjective{
+  background-color: red;
+  width: 200px;
+  height: 70px;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  padding: 10px;
+
+  
+}
+
+.containterObjective {
+  padding: 10px 0;
+
+  .titleObj {
+    font-size: 2rem;
+  }
+
+  .descObj{
+    padding-bottom:30px;
+    font-size: 1.8rem;
+   
+  }
+
+  
+}
+
+.modal-content{
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.btnCompleted{
+  padding: 10px 0;
+}
+
+.btnNovoObj{
+  margin: 10px;
+}
+
+.foundProject {
+  padding: 20px;
+}
 

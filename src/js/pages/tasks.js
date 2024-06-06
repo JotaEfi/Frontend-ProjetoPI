@@ -17,10 +17,10 @@ function Tasks() {
       <div className="white_space"></div>
       <Navbar />
       <TaskProvider>
-      <section className="toDoContainer">
+      <section>
      
         <ToDoComponents />
-        <WaitingComponent />
+        {/* <WaitingComponent /> */}
         {/* <FinishedComponent /> */}
    
       </section>
