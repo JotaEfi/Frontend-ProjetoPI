@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/navbar.js";
-import backgroundImage from "../../assets/img/site-background.png";
+
 import Footer from "../components/footer.js";
 import ProjectLogo from "../../assets/logo/monza-logo.jpg";
 

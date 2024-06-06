@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { api } from "../../services/api";
 
+
 function Projeto() {
   const [showModal, setShowModal] = useState(false);
   const [projectName, setProjectName] = useState("");
@@ -9,9 +10,7 @@ function Projeto() {
   const [endDate, setEndDate] = useState("");
   const [projects, setProjects] = useState([]);
   const userId = localStorage.getItem("userId");
-  // const projectIds = [3, 4, 5, 6, 7, 8];
 
-  // Carregar projetos associados ao usuário logado
   const loadUserProjects = async () => {
     try {
       const response = await api.get(`/users/${userId}/projects`);
@@ -25,9 +24,7 @@ function Projeto() {
 
   useEffect(() => {
     loadUserProjects();
-  
   }, []);
-
 
   const handleProjectClick = (projectId) => {
     window.location.href = `/projects/${projectId}/tasks`;
@@ -36,7 +33,7 @@ function Projeto() {
   const createClassification = async (projectId) => {
     const classifications = [
       {
-        title:"Nothing",
+        title: "Nothing",
         projectId: projectId,
       }
     ];
@@ -67,63 +64,61 @@ function Projeto() {
       setProjects((prevProjects) => [...prevProjects, newProject]);
       setShowModal(false);
 
-      // Create classifications for the new project
       await createClassification(newProject.id);
     } catch (error) {
       console.error("Erro ao tentar criar projeto:", error);
     }
   };
 
-
   return (
     <div className="projeto">
-      
-      
+      <div className="spaceProject">
+        {Array.isArray(projects) && projects.length > 0 ? (
+          projects.map((project) => (
+            <div key={project.id} onClick={() => handleProjectClick(project.id)} className="created-project-name">
+              {project.name}
+            </div>
+          ))
+        ) : (
+          <p>Nenhum projeto encontrado.</p>
+        )}
+      </div>
       <button className="btnProject" onClick={() => setShowModal(true)}>
-        <span className="btnAddProject">+</span>
-        Novo projeto
+        <span>+</span> Novo projeto
       </button>
-
       {showModal && (
         <div className="modal">
-          <input
-            type="text"
-            value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
-            placeholder="Nome do projeto"
-          />
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Descrição"
-          />
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            placeholder="Data de início"
-          />
-          <input
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            placeholder="Data de final"
-          />
-          <button onClick={handleNewProject}>Criar Projeto</button>
-        </div>
-      )}<div className="spaceProject">
-          {Array.isArray(projects) && projects.length > 0 ? (
-        projects.map((project) => (
-          <div key={project.id} onClick={() => handleProjectClick(project.id)} className="created-project-name">
-            {project.name}
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowModal(false)}>&times;</span>
+            <h2>Criar Novo Projeto</h2>
+            <input
+              type="text"
+              value={projectName}
+              onChange={(e) => setProjectName(e.target.value)}
+              placeholder="Nome do projeto"
+            />
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Descrição"
+            />
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              placeholder="Data de início"
+            />
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              placeholder="Data de final"
+            />
+            <button onClick={handleNewProject}>Criar Projeto</button>
           </div>
-        ))
-      ) : (
-        <p>Nenhum projeto encontrado.</p>
+        </div>
       )}
-      </div>
-      
     </div>
   );
 }
