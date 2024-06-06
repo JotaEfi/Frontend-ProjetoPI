@@ -3,8 +3,6 @@ import Register from "../js/pages/register";
 import Home from "../js/pages/home";
 import Tasks from "../js/pages/tasks";
 import About from "../js/pages/about";
-
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Projetos from "../js/pages/projetos";
 
@@ -16,9 +14,8 @@ export const AppRouter = () => {
       <Routes>
         <Route path="/auth/login" element={<Login />} />
         <Route path="/" element={<Register />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/projects" element={<Projetos />} />
+      
+        <Route path="/projects" element={  isAuthenticated ? <Projetos /> :  <Navigate to="/auth/login" replace />} />
 
         <Route
           path="/projects/:projectId/tasks"
@@ -32,12 +29,12 @@ export const AppRouter = () => {
             isAuthenticated ? <About /> : <Navigate to="/auth/login" replace />
           }
         />
-        {/* <Route
+        <Route
             path="/home"
             element={
               isAuthenticated ? <Home /> : <Navigate to="/auth/login" replace />
             }
-          /> */}
+          />
       </Routes>
     </BrowserRouter>
   );

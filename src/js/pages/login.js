@@ -3,14 +3,11 @@ import { useLocation } from "react-router-dom";
 import { api } from "../../services/api";
 
 function Login() {
-  const [email, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("");
-
-  // State to store fetched user ID
-  // const [userId, setUserId] = useState(null); // Initialize as null
 
   // Function to load all users and find the user ID by email
   const loadUsers = async (email) => {
@@ -18,7 +15,6 @@ function Login() {
       const response = await api.get(`/users`);
       const users = response.data.content; // Access the 'content' key
       
-      // Check if users is an array
       if (Array.isArray(users)) {
         const user = users.find((user) => user.email === email);
         if (user) {
@@ -50,24 +46,26 @@ function Login() {
 
         // Load user ID based on the email
         const userId = await loadUsers(email);
+        console.log("Loaded userId:", userId);
+
         if (userId) {
           localStorage.setItem("userId", userId);
+          // Ensure the user ID is set before redirecting
+          window.location.href = "/home";
         } else {
-          console.error("Erro: ID do usuário não encontrado após o login.");
+          throw new Error("Por favor, recarregue a página e tente novamente");
         }
-
-        window.location.href = "/home";
       } else {
-        throw new Error("Email ou senha incorretos");
+        throw new Error("Email or password is incorrect");
       }
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
+      console.error("Error during sign in:", error);
       setErrorMessage(error.message);
     }
   };
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -96,7 +94,7 @@ function Login() {
               type="email"
               value={email}
               placeholder="Digite seu e-mail"
-              onChange={handleUsernameChange}
+              onChange={handleEmailChange}
               required
               autoComplete="off"
             />
