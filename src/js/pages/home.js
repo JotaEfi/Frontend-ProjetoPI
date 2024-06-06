@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/navbar.js";
 import backgroundImage from "../../assets/img/site-background.png";
 import Projeto from "../components/criarProjeto.js";
-
 export default function Home() {
   return (
     <div className="home pageContainer">

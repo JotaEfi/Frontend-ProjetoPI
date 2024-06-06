@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import ProjectLogo from "../../assets/img/monza-logo4.png";
 import { api } from "../../services/api";
+
 // import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:621520092.
 
